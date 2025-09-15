@@ -104,7 +104,7 @@ function Home() {
 
                                 <button
                                     type="submit"
-                                    className="bg-sky-900 text-white font-bold py-3 rounded-lg hover:bg-sky-800 transition"
+                                    className="bg-sky-900 text-white font-bold py-3 rounded-lg hover:bg-sky-700 transition duration-300 ease-in-out active:bg-sky-500 hover:cursor-pointer"
                                 >
                                     COTAR AGORA
                                 </button>
@@ -188,7 +188,7 @@ function Home() {
 
                         <div className="p-6 pt-0">
                             <button
-                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center active:bg-green-400 cursor-pointer"
                                 onClick={() => window.open(whatsappLink, '_blank')}
                             >
                                 <svg
@@ -235,7 +235,8 @@ function Home() {
 
                         <div className="p-6 pt-0">
                             <button
-                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center
+                                active:bg-green-400 cursor-pointer"
                                 onClick={() => window.open(whatsappLink, '_blank')}
                             >
                                 <svg
@@ -282,7 +283,8 @@ function Home() {
 
                         <div className="p-6 pt-0">
                             <button
-                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+                                className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center
+                                active:bg-green-400 cursor-pointer"
                                 onClick={() => window.open(whatsappLink, '_blank')}
                             >
                                 <svg
