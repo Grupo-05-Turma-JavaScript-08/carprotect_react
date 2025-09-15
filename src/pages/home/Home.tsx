@@ -12,14 +12,14 @@ function Home() {
             <div className="flex flex-col lg:flex-row w-full max-w-7xl justify-center ">
 
 
-                <article className="w-full lg:w-1/2 flex flex-col justify-center  -mr-10">
+                <article className="w-full lg:w-1/2 flex flex-col justify-center ">
                     <h3 className="text-white text-lg bg-sky-800 w-full md:w-1/3 -mb-5 justify-center flex">
                         CarProtec  Seguro para
                     </h3>
                     <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white">
                         Automóveis
                     </h1>
-                    <div className="relative">
+                    <div className="relative left-15">
                         <img
                             src="https://i.ibb.co/xqZxzmH1/output-onlinepngtools-1.png"
                             alt="Carro com família sorrindo"
