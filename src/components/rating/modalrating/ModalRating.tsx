@@ -40,7 +40,7 @@ const ModalRating: React.FC = () => {
         >
           <X size={20} weight="bold" />
         </button>
-        <div className="rounded-t-2xl bg-sky-900 p-4 text-center text-white">
+        <div className="rounded-t-2xl bg-sky-900 p-4 text-center text-gray-200">
           <p className="text-sm">Nos ajude a melhorar!</p>
           <h2 className="text-xl font-bold">Avalie sua experiência</h2>
         </div>
@@ -85,7 +85,7 @@ const ModalRating: React.FC = () => {
             onChange={(e) => setFeedback(e.target.value)}
           ></textarea>
           <button
-            className="cursor-pointer rounded-lg bg-sky-900 px-6 py-2 font-bold text-white transition hover:bg-sky-800"
+            className="button cursor-pointer rounded-lg bg-sky-900 px-6 py-2 font-bold text-white transition hover:bg-sky-800"
             onClick={closeModal}
           >
             Enviar

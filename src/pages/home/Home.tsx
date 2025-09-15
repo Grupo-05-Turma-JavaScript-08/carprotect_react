@@ -6,6 +6,7 @@ function Home() {
   const [hasInputChanged, setHasInputChanged] = useState(false);
   const timerRef = useRef<number | null>(null);
 
+  // em todos input onChange={handleInputChange}
   const handleInputChange = () => {
     if (!hasInputChanged) {
       setHasInputChanged(true);
@@ -15,14 +16,13 @@ function Home() {
       }
     }
   };
-
+  // onClick={handleQuoteClick}   no botão de cotação
   const handleQuoteClick = (e) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
     setHasInputChanged(true);
     e.preventDefault();
-    console.log('Botão "COTAR AGORA" clicado. O modal não irá aparecer.');
   };
 
   useEffect(() => {
