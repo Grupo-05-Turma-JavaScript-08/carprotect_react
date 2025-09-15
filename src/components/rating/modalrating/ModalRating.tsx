@@ -35,7 +35,7 @@ const ModalRating: React.FC = () => {
     >
       <div className="rounded-2xl bg-white shadow-xl">
         <button
-          className="absolute top-4 right-4 z-10 rounded-full p-1 text-white"
+          className="absolute top-4 right-4 z-10 rounded-full p-1 text-white focus:outline-none"
           onClick={closeModal}
         >
           <X size={20} weight="bold" />
