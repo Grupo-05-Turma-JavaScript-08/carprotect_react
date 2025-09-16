@@ -50,7 +50,7 @@ function DeletarCar() {
       });
 
       ToastAlerta("Carro excluído com sucesso!", "success");
-      navigate("/dashboard");
+      retornar();
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
@@ -63,7 +63,7 @@ function DeletarCar() {
   }
 
   function retornar() {
-    navigate("/dashboard");
+    navigate("/dashboardcliente");
   }
 
   return (

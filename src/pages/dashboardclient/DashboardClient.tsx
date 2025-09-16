@@ -76,15 +76,15 @@ function DashboardClient() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [car, setCar] = useState<Car[]>([]);
-  const { user, handleLogout  } = useContext(AuthContext);
+  const { user, handleLogout } = useContext(AuthContext);
   const token = user.token;
 
 
-   useEffect(() => {
-      if (token === '') {
-          ToastAlerta('O Usuário precisa estar logado!', 'warning');
-          navigate('/');
-      }
+  useEffect(() => {
+    if (token === '') {
+      ToastAlerta('O Usuário precisa estar logado!', 'warning');
+      navigate('/');
+    }
   }, [token]);
 
   useEffect(() => {
@@ -110,6 +110,10 @@ function DashboardClient() {
     }
 
   }
+
+  const carrosDoUsuario = car.filter(
+  (carro) => carro.user?.username === user.username
+);
   return (
     <div className="flex flex-col min-h-screen">
       <div className="p-4 mx-auto max-w-7xl flex-grow">
@@ -124,13 +128,13 @@ function DashboardClient() {
             <img src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" alt="Logo da Empresa" className="w-20" />
           </div>
           <div className="flex-grow text-center">
-            <h1 className="text-3xl font-bold">Dashboard de Carros</h1>
+            <h1 className="text-3xl font-bold">Dashboard Cliente</h1>
           </div>
           <div className="flex-none flex items-center gap-4">
             <Link to='/cadastrarcarro'>
-            <button className="px-6 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">
-              Novo Carro
-            </button>
+              <button className="px-6 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">
+                Novo Carro
+              </button>
             </Link>
 
             <button
@@ -143,57 +147,65 @@ function DashboardClient() {
         </header>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-center">
             <div className="bg-blue-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-blue-700">Total de Carros</h3>
-              <p className="text-2xl font-bold text-blue-900">{car.length}</p>
+              <p className="text-2xl font-bold text-blue-900">{carrosDoUsuario.length}</p>
             </div>
             <div className="bg-green-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-green-700">Valor Total dos Carros</h3>
               <p className="text-2xl font-bold text-green-900">
-                R$ {car.reduce((total, carro) => total + Number(carro.price), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                R$ {carrosDoUsuario.reduce((total, carro) => total + Number(carro.price), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
             <div className="bg-yellow-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-yellow-700">Prêmios a Pagar</h3>
               <p className="text-2xl font-bold text-yellow-900">
-                R$ {car.reduce((total, carro) => total + Number(carro.premiumAmount), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                R$ {carrosDoUsuario.reduce((total, carro) => total + Number(carro.premiumAmount), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-purple-700">Carros Segurados</h3>
               <p className="text-2xl font-bold text-purple-900">
-                {car.filter(carro => carro.insuranceStatus === 'insured').length} de {car.length}
+                {carrosDoUsuario.filter(carro => carro.insuranceStatus !== null).length} de {carrosDoUsuario.length}
+              </p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold text-purple-700">Carros Antigos</h3>
+              <p className="text-2xl font-bold text-purple-900">
+                {carrosDoUsuario.filter(carro => carro.insuranceStatus == "Carro Antigo").length} de {carrosDoUsuario.length}
               </p>
             </div>
           </div>
         </div>
 
         <div className="mt-8">
-          {car.length === 0 ? (
+          {carrosDoUsuario.length === 0 ? (
             <p className="text-center text-gray-500">Nenhum carro encontrado.</p>
           ) : (
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               {/* Cabeçalho da tabela */}
               <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
-                <div className="grid grid-cols-14 gap-4 text-sm font-medium text-gray-700">
+                <div className="grid grid-cols-18 gap-4 text-sm font-medium text-gray-700">
                   <div className="col-span-3">Modelo</div>
                   <div className="col-span-2">Placa</div>
                   <div className="col-span-1">Ano</div>
                   <div className="col-span-2">Preço</div>
+                  <div className="col-span-2">Nome Seguro</div>
                   <div className="col-span-2">Status Seguro</div>
+                  <div className="col-span-2">Status Carro</div>
                   <div className="col-span-2">Prêmio</div>
                   <div className="col-span-2">Ações</div>
                 </div>
               </div>
               <div className="divide-y divide-gray-200">
-                {car.map((carro, index) => (
+                {carrosDoUsuario.map((carro, index) => (
                   <div
                     key={carro.id}
                     className={`px-6 py-4 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
                       }`}
                   >
-                    <div className="grid grid-cols-14 gap-4 items-center text-sm">
+                    <div className="grid grid-cols-18 gap-4 items-center text-sm">
                       <div className="col-span-3">
                         <p className="font-medium text-gray-900">{carro.model}</p>
                         <p className="text-gray-500 text-xs mt-1">{carro.description}</p>
@@ -208,11 +220,22 @@ function DashboardClient() {
                         <span className="text-gray-900 font-medium">R$ {carro.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
                       </div>
                       <div className="col-span-2">
+                        <span className="text-gray-900">{carro.insurance?.title}</span>
+                      </div>
+                      <div className="col-span-2">
                         <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${carro.insuranceStatus !== null
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-red-100 text-red-800'
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-red-100 text-red-800'
                           }`}>
                           {carro.insurance !== null ? 'Segurado' : 'Não Segurado'}
+                        </span>
+                      </div>
+                       <div className="col-span-2">
+                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${carro.insuranceStatus == "Carro Atual"
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-red-100 text-red-800'
+                          }`}>
+                          {carro.insuranceStatus == "Carro Antigo" ? 'Antigo' : 'Atual'}
                         </span>
                       </div>
                       <div className="col-span-2">

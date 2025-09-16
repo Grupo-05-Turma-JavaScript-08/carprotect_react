@@ -12,6 +12,10 @@ import FormCar from './components/car/formcar/FormCar';
 import DeletarCar from './components/car/deletarcar/DeletarCar';
 import Footer from './components/footer/Footer';
 import ListaCar from './components/car/listacar/ListaCar';
+import DashboardAdmin from './pages/dashboardadmin/DashBoardAdmin';
+import ListaInsurance from './components/insurance/listainsurance/ListaInsurance';
+import FormInsurance from './components/insurance/forminsurance/FormInsurance';
+import DeleteInsurance from './components/insurance/deleteinsurance/DeleteInsurance';
 
 function App() {
   return (
@@ -27,12 +31,16 @@ function App() {
           <Route path='/logar'element={<AuthPage />} />
           <Route path="/quem-somos" element={<Sobre />} />
           <Route path='/contato' element={<Contato />} />
-          <Route path="/dashboard" element={<DashboardClient />} />
-          <Route path="/dashboardseguradora"  />
+          <Route path="/dashboardcliente" element={<DashboardClient />} />
+          <Route path="/dashboardadmin" element={<DashboardAdmin />} />
           <Route path='/carros' element={<ListaCar />} />
           <Route path='/cadastrarcarro' element={<FormCar />} />
           <Route path='/editarcarro/:id' element={<FormCar />} />
           <Route path='/deletarcarro/:id' element={<DeletarCar />} />
+          <Route path='/cadastrarseguro' element={<FormInsurance />} />
+          <Route path='/editarseguro/:id' element={<FormInsurance />} />
+          <Route path='/deletarseguro/:id' element={<DeleteInsurance />} />
+
         </Routes>
         </div>
         <Footer />

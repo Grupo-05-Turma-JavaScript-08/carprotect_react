@@ -79,7 +79,7 @@ function FormCar() {
   }
 
   function retornar() {
-    navigate("/dashboard");
+    navigate("/dashboardcliente");
   }
 
   async function salvarCar(e: FormEvent<HTMLFormElement>) {
@@ -92,6 +92,7 @@ function FormCar() {
       try {
         await atualizar(`carro`, car, setCar, { headers: { Authorization: token } });
         ToastAlerta("Carro atualizado com sucesso!", "success");
+        retornar();
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
@@ -103,6 +104,7 @@ function FormCar() {
       try {
         await cadastrar(`carro`, car, setCar, { headers: { Authorization: token } });
         ToastAlerta("Carro cadastrado com sucesso!", "success");
+         retornar();
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();

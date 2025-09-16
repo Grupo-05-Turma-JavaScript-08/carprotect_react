@@ -64,7 +64,7 @@ function DeleteInsurance() {
     }
 
     function retornar() {
-        navigate("/planos");
+        navigate("/dashboardadmin");
     }
 
 

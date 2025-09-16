@@ -3,8 +3,6 @@ import type UserLogin from "../models/UserLogin";
 import { ToastAlerta } from "../utils/ToastAlerta";
 import { login } from "../services/Service";
 
-
-
 interface AuthContextProps {
     user: UserLogin;
     handleLogout(): void;
@@ -18,7 +16,7 @@ interface AuthProviderProps {
 
 export const AuthContext = createContext({} as AuthContextProps);
 
-export function AuthProvider({children} : AuthProviderProps) {
+export function AuthProvider({ children }: AuthProviderProps) {
 
     const [user, setUser] = useState<UserLogin>({
         id: 0,
@@ -30,15 +28,25 @@ export function AuthProvider({children} : AuthProviderProps) {
         token: ''
     });
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
 
-    async function handleLogin(userLogin:UserLogin) {
+    async function handleLogin(userLogin: UserLogin) {
         setIsLoading(true);
-        try{
-            await login('/usuarios/logar', userLogin, setUser);
+        try {
+            await login('/usuarios/logar', userLogin, (userResponse: UserLogin) => {
+                // Força admin se o e-mail for o do administrador
+                if (userResponse.username === "admin@email.com.br") {
+                    userResponse.admin = true;
+                } else {
+                    userResponse.admin = false;
+                }
+
+                setUser(userResponse);
+            });
+
             ToastAlerta('Login realizado com sucesso', 'success');
         } catch (error) {
-            ToastAlerta('Dados do usuário inválidos', 'error');
+            ToastAlerta('Dados do usuário inválidos', 'error');
         }
         setIsLoading(false);
     }
@@ -56,9 +64,8 @@ export function AuthProvider({children} : AuthProviderProps) {
     }
 
     return (
-        <AuthContext.Provider value={{user, handleLogin, handleLogout, isLoading}}>
+        <AuthContext.Provider value={{ user, handleLogin, handleLogout, isLoading }}>
             {children}
         </AuthContext.Provider>
-    )
-
+    );
 }
