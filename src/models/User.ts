@@ -1,3 +1,4 @@
+import type Car from "./Car";
 
 export default interface User {
     id: number;
