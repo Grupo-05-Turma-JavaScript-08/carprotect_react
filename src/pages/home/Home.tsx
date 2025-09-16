@@ -21,6 +21,7 @@ function Home() {
             }
         }
     };
+    
     // onClick={handleQuoteClick}   no botão de cotação
     const handleQuoteClick = (e: { preventDefault: () => void; }) => {
         if (timerRef.current) {
@@ -50,6 +51,7 @@ function Home() {
     return (
         <>
             <ModalRating isOpen={isModalOpen} onClose={handleCloseModal} />
+
             <section className="bg-sky-900 flex justify-center items-center py-10 px-6 flex-col">
                 <div className="flex flex-col lg:flex-row w-full max-w-7xl justify-center ">
 
@@ -148,6 +150,7 @@ function Home() {
                                         type="submit"
                                         className="bg-sky-900 text-white font-bold py-3 rounded-lg hover:bg-sky-800 transition"
                                         onClick={handleQuoteClick}
+
                                     >
                                         COTAR AGORA
                                     </button>
