@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
-    <header className="bg-gray-500 text-white">
+    <header className="bg-gray-200 text-[#678391]">
       <nav className="max-w-7xl mx-auto flex items-center justify-between p-4">
         
         <div className="flex items-center gap-6">
-          <Link to="/" className="text-2xl font-bold">
-            CarProtect
+          <Link to="/home" className="text-2xl font-bold">
+            <img src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" alt="output-onlinepngtools" className="w-50"></img>
           </Link>
 
           <div className="flex gap-4 text-lg">
