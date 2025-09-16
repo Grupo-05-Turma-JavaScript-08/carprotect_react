@@ -1,4 +1,4 @@
-import { Target, Binoculars, ShieldCheck, PlayCircle } from "phosphor-react";
+import { Target, Binoculars, ShieldCheck, PlayCircle } from "@phosphor-icons/react";
 import { useState } from "react";
 
 function Sobre() {
