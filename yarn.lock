@@ -16,7 +16,11 @@
   resolved "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.28.4.tgz"
   integrity sha512-YsmSKC29MJwf0gF8Rjjrg5LQCmyh+j/nD8/eP7f+BeoQTKYqs9RoWbjGOdy0+1Ekr68RJZMUOPVQaQisnIo4Rw==
 
+<<<<<<< HEAD
 "@babel/core@^7.28.3":
+=======
+"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.28.3":
+>>>>>>> feature/dashboar-client
   version "7.28.4"
   resolved "https://registry.npmjs.org/@babel/core/-/core-7.28.4.tgz"
   integrity sha512-2BCOP7TN8M+gVDj7/ht3hsaO/B/n5oDbiAyyvnRlNOs+u1o+JWNYTQrmpuNp1/Wq2gcFrI01JAW+paEKDMx/CA==
@@ -160,6 +164,7 @@
     "@babel/helper-string-parser" "^7.27.1"
     "@babel/helper-validator-identifier" "^7.27.1"
 
+<<<<<<< HEAD
 "@emnapi/core@^1.4.3", "@emnapi/core@^1.4.5":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.5.0.tgz#85cd84537ec989cebb2343606a1ee663ce4edaf0"
@@ -182,21 +187,34 @@
   dependencies:
     tslib "^2.4.0"
 
+=======
+>>>>>>> feature/dashboar-client
 "@esbuild/aix-ppc64@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.25.9.tgz"
   integrity sha512-OaGtL73Jck6pBKjNIe24BnFE6agGl+6KxDtTfHhy1HmhthfKouEcOhqpSL64K4/0WCtbKFLOdzD/44cJ4k9opA==
 
+<<<<<<< HEAD
 "@esbuild/android-arm64@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.25.9.tgz"
   integrity sha512-IDrddSmpSv51ftWslJMvl3Q2ZT98fUSL2/rlUXuVqRXHCs5EUF1/f+jbjF5+NG9UffUDMCiTyh8iec7u8RlTLg==
 
+=======
+>>>>>>> feature/dashboar-client
 "@esbuild/android-arm@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.25.9.tgz"
   integrity sha512-5WNI1DaMtxQ7t7B6xa572XMXpHAaI/9Hnhk8lcxF4zVN4xstUgTlvuGDorBguKEnZO70qwEcLpfifMLoxiPqHQ==
 
+<<<<<<< HEAD
+=======
+"@esbuild/android-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.25.9.tgz"
+  integrity sha512-IDrddSmpSv51ftWslJMvl3Q2ZT98fUSL2/rlUXuVqRXHCs5EUF1/f+jbjF5+NG9UffUDMCiTyh8iec7u8RlTLg==
+
+>>>>>>> feature/dashboar-client
 "@esbuild/android-x64@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.25.9.tgz"
@@ -222,16 +240,27 @@
   resolved "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.25.9.tgz"
   integrity sha512-mrKX6H/vOyo5v71YfXWJxLVxgy1kyt1MQaD8wZJgJfG4gq4DpQGpgTB74e5yBeQdyMTbgxp0YtNj7NuHN0PoZg==
 
+<<<<<<< HEAD
 "@esbuild/linux-arm64@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.25.9.tgz"
   integrity sha512-BlB7bIcLT3G26urh5Dmse7fiLmLXnRlopw4s8DalgZ8ef79Jj4aUcYbk90g8iCa2467HX8SAIidbL7gsqXHdRw==
 
+=======
+>>>>>>> feature/dashboar-client
 "@esbuild/linux-arm@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.25.9.tgz"
   integrity sha512-HBU2Xv78SMgaydBmdor38lg8YDnFKSARg1Q6AT0/y2ezUAKiZvc211RDFHlEZRFNRVhcMamiToo7bDx3VEOYQw==
 
+<<<<<<< HEAD
+=======
+"@esbuild/linux-arm64@0.25.9":
+  version "0.25.9"
+  resolved "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.25.9.tgz"
+  integrity sha512-BlB7bIcLT3G26urh5Dmse7fiLmLXnRlopw4s8DalgZ8ef79Jj4aUcYbk90g8iCa2467HX8SAIidbL7gsqXHdRw==
+
+>>>>>>> feature/dashboar-client
 "@esbuild/linux-ia32@0.25.9":
   version "0.25.9"
   resolved "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.25.9.tgz"
@@ -360,7 +389,11 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+<<<<<<< HEAD
 "@eslint/js@9.35.0", "@eslint/js@^9.33.0":
+=======
+"@eslint/js@^9.33.0", "@eslint/js@9.35.0":
+>>>>>>> feature/dashboar-client
   version "9.35.0"
   resolved "https://registry.npmjs.org/@eslint/js/-/js-9.35.0.tgz"
   integrity sha512-30iXE9whjlILfWobBkNerJo+TXYsgVM5ERQwMcMKCHckHflCmf7wXDAHlARoWnh0s1U72WqlbeyE7iAcCzuCPw==
@@ -442,6 +475,7 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+<<<<<<< HEAD
 "@napi-rs/wasm-runtime@^0.2.12":
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.12.tgz#3e78a8b96e6c33a6c517e1894efbd5385a7cb6f2"
@@ -451,6 +485,8 @@
     "@emnapi/runtime" "^1.4.3"
     "@tybys/wasm-util" "^0.10.0"
 
+=======
+>>>>>>> feature/dashboar-client
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -459,7 +495,11 @@
     "@nodelib/fs.stat" "2.0.5"
     run-parallel "^1.1.9"
 
+<<<<<<< HEAD
 "@nodelib/fs.stat@2.0.5", "@nodelib/fs.stat@^2.0.2":
+=======
+"@nodelib/fs.stat@^2.0.2", "@nodelib/fs.stat@2.0.5":
+>>>>>>> feature/dashboar-client
   version "2.0.5"
   resolved "https://registry.npmjs.org/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz"
   integrity sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==
@@ -697,6 +737,7 @@
     "@tailwindcss/oxide" "4.1.13"
     tailwindcss "4.1.13"
 
+<<<<<<< HEAD
 "@tybys/wasm-util@^0.10.0":
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/@tybys/wasm-util/-/wasm-util-0.10.1.tgz#ecddd3205cf1e2d5274649ff0eedd2991ed7f414"
@@ -704,6 +745,8 @@
   dependencies:
     tslib "^2.4.0"
 
+=======
+>>>>>>> feature/dashboar-client
 "@types/babel__core@^7.20.5":
   version "7.20.5"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.20.5.tgz"
@@ -737,7 +780,11 @@
   dependencies:
     "@babel/types" "^7.28.2"
 
+<<<<<<< HEAD
 "@types/estree@1.0.8", "@types/estree@^1.0.6":
+=======
+"@types/estree@^1.0.6", "@types/estree@1.0.8":
+>>>>>>> feature/dashboar-client
   version "1.0.8"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-1.0.8.tgz"
   integrity sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==
@@ -752,7 +799,11 @@
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.1.9.tgz"
   integrity sha512-qXRuZaOsAdXKFyOhRBg6Lqqc0yay13vN7KrIg4L7N4aaHN68ma9OK3NE1BoDFgFOTfM7zg+3/8+2n8rLUH3OKQ==
 
+<<<<<<< HEAD
 "@types/react@^19.1.10":
+=======
+"@types/react@^19.0.0", "@types/react@^19.1.10":
+>>>>>>> feature/dashboar-client
   version "19.1.13"
   resolved "https://registry.npmjs.org/@types/react/-/react-19.1.13.tgz"
   integrity sha512-hHkbU/eoO3EG5/MZkuFSKmYqPbSVk5byPFa3e7y/8TybHiLMACgI8seVYlicwk7H5K/rI2px9xrQp/C+AUDTiQ==
@@ -774,7 +825,11 @@
     natural-compare "^1.4.0"
     ts-api-utils "^2.1.0"
 
+<<<<<<< HEAD
 "@typescript-eslint/parser@8.43.0":
+=======
+"@typescript-eslint/parser@^8.43.0", "@typescript-eslint/parser@8.43.0":
+>>>>>>> feature/dashboar-client
   version "8.43.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-8.43.0.tgz"
   integrity sha512-B7RIQiTsCBBmY+yW4+ILd6mF5h1FUwJsVvpqkrgpszYifetQ2Ke+Z4u6aZh0CblkUGIdR59iYVyXqqZGkZ3aBw==
@@ -802,7 +857,11 @@
     "@typescript-eslint/types" "8.43.0"
     "@typescript-eslint/visitor-keys" "8.43.0"
 
+<<<<<<< HEAD
 "@typescript-eslint/tsconfig-utils@8.43.0", "@typescript-eslint/tsconfig-utils@^8.43.0":
+=======
+"@typescript-eslint/tsconfig-utils@^8.43.0", "@typescript-eslint/tsconfig-utils@8.43.0":
+>>>>>>> feature/dashboar-client
   version "8.43.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/tsconfig-utils/-/tsconfig-utils-8.43.0.tgz"
   integrity sha512-ALC2prjZcj2YqqL5X/bwWQmHA2em6/94GcbB/KKu5SX3EBDOsqztmmX1kMkvAJHzxk7TazKzJfFiEIagNV3qEA==
@@ -818,7 +877,11 @@
     debug "^4.3.4"
     ts-api-utils "^2.1.0"
 
+<<<<<<< HEAD
 "@typescript-eslint/types@8.43.0", "@typescript-eslint/types@^8.43.0":
+=======
+"@typescript-eslint/types@^8.43.0", "@typescript-eslint/types@8.43.0":
+>>>>>>> feature/dashboar-client
   version "8.43.0"
   resolved "https://registry.npmjs.org/@typescript-eslint/types/-/types-8.43.0.tgz"
   integrity sha512-vQ2FZaxJpydjSZJKiSW/LJsabFFvV7KgLC5DiLhkBcykhQj8iK9BOaDmQt74nnKdLvceM5xmhaTF+pLekrxEkw==
@@ -874,7 +937,11 @@ acorn-jsx@^5.3.2:
   resolved "https://registry.npmjs.org/acorn-jsx/-/acorn-jsx-5.3.2.tgz"
   integrity sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==
 
+<<<<<<< HEAD
 acorn@^8.15.0:
+=======
+"acorn@^6.0.0 || ^7.0.0 || ^8.0.0", acorn@^8.15.0:
+>>>>>>> feature/dashboar-client
   version "8.15.0"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.15.0.tgz"
   integrity sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==
@@ -908,7 +975,11 @@ asynckit@^0.4.0:
 
 autoprefixer@^10.4.21:
   version "10.4.21"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.21.tgz#77189468e7a8ad1d9a37fbc08efc9f480cf0a95d"
+=======
+  resolved "https://registry.npmjs.org/autoprefixer/-/autoprefixer-10.4.21.tgz"
+>>>>>>> feature/dashboar-client
   integrity sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ==
   dependencies:
     browserslist "^4.24.4"
@@ -932,7 +1003,11 @@ balanced-match@^1.0.0:
   resolved "https://registry.npmjs.org/balanced-match/-/balanced-match-1.0.2.tgz"
   integrity sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==
 
+<<<<<<< HEAD
 baseline-browser-mapping@^2.8.2, baseline-browser-mapping@^2.8.3:
+=======
+baseline-browser-mapping@^2.8.2:
+>>>>>>> feature/dashboar-client
   version "2.8.4"
   resolved "https://registry.npmjs.org/baseline-browser-mapping/-/baseline-browser-mapping-2.8.4.tgz"
   integrity sha512-L+YvJwGAgwJBV1p6ffpSTa2KRc69EeeYGYjRVWKs0GKrK+LON0GC0gV+rKSNtALEDvMDqkvCFq9r1r94/Gjwxw==
@@ -959,7 +1034,11 @@ braces@^3.0.3:
   dependencies:
     fill-range "^7.1.1"
 
+<<<<<<< HEAD
 browserslist@^4.24.0:
+=======
+browserslist@^4.24.0, browserslist@^4.24.4, "browserslist@>= 4.21.0":
+>>>>>>> feature/dashboar-client
   version "4.26.0"
   resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.26.0.tgz"
   integrity sha512-P9go2WrP9FiPwLv3zqRD/Uoxo0RSHjzFCiQz7d4vbmwNqQFo9T9WCeP/Qn5EbcKQY6DBbkxEXNcpJOmncNrb7A==
@@ -970,6 +1049,7 @@ browserslist@^4.24.0:
     node-releases "^2.0.21"
     update-browserslist-db "^1.1.3"
 
+<<<<<<< HEAD
 browserslist@^4.24.4:
   version "4.26.2"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.26.2.tgz#7db3b3577ec97f1140a52db4936654911078cef3"
@@ -981,6 +1061,8 @@ browserslist@^4.24.4:
     node-releases "^2.0.21"
     update-browserslist-db "^1.1.3"
 
+=======
+>>>>>>> feature/dashboar-client
 call-bind-apply-helpers@^1.0.1, call-bind-apply-helpers@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/call-bind-apply-helpers/-/call-bind-apply-helpers-1.0.2.tgz"
@@ -994,12 +1076,16 @@ callsites@^3.0.0:
   resolved "https://registry.npmjs.org/callsites/-/callsites-3.1.0.tgz"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
+<<<<<<< HEAD
 caniuse-lite@^1.0.30001702:
   version "1.0.30001743"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001743.tgz#50ff91a991220a1ee2df5af00650dd5c308ea7cd"
   integrity sha512-e6Ojr7RV14Un7dz6ASD0aZDmQPT/A+eZU+nuTNfjqmRrmkmQlnTNWH0SKmqagx9PeW87UVqapSurtAXifmtdmw==
 
 caniuse-lite@^1.0.30001741:
+=======
+caniuse-lite@^1.0.30001702, caniuse-lite@^1.0.30001741:
+>>>>>>> feature/dashboar-client
   version "1.0.30001741"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001741.tgz"
   integrity sha512-QGUGitqsc8ARjLdgAfxETDhRbJ0REsP6O3I96TAth/mVjh2cYzN2u+3AzPP3aVSm2FehEItaJw1xd+IGBXWeSw==
@@ -1221,7 +1307,11 @@ eslint-visitor-keys@^4.2.1:
   resolved "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-4.2.1.tgz"
   integrity sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==
 
+<<<<<<< HEAD
 eslint@^9.33.0:
+=======
+"eslint@^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0", "eslint@^6.0.0 || ^7.0.0 || >=8.0.0", "eslint@^8.57.0 || ^9.0.0", eslint@^9.33.0, eslint@>=5.0.0, eslint@>=8.40:
+>>>>>>> feature/dashboar-client
   version "9.35.0"
   resolved "https://registry.npmjs.org/eslint/-/eslint-9.35.0.tgz"
   integrity sha512-QePbBFMJFjgmlE+cXAlbHZbHpdFVS2E/6vzCy7aKlebddvl1vadiC4JFV5u/wqTkNUwEV8WrQi257jf5f06hrg==
@@ -1386,6 +1476,7 @@ form-data@^4.0.4:
 
 fraction.js@^4.3.7:
   version "4.3.7"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/fraction.js/-/fraction.js-4.3.7.tgz#06ca0085157e42fda7f9e726e79fefc4068840f7"
   integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
 
@@ -1393,6 +1484,15 @@ framer-motion@^12.23.13:
   version "12.23.13"
   resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.23.13.tgz#146ffad7710172359b9274c46f75c677068f1092"
   integrity sha512-OMF57Xh0fuTXfJQPtCieYGeU9Fam4SxqPLVz78YI7ATRFrfz8SARtqr1+qv56cX45kPFcIEfkUorVfxlOsjcUg==
+=======
+  resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.3.7.tgz"
+  integrity sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==
+
+framer-motion@^12.23.12:
+  version "12.23.12"
+  resolved "https://registry.npmjs.org/framer-motion/-/framer-motion-12.23.12.tgz"
+  integrity sha512-6e78rdVtnBvlEVgu6eFEAgG9v3wLnYEboM8I5O5EXvfKC8gxGQB8wXJdhkMy10iVcn05jl6CNw7/HTsTCfwcWg==
+>>>>>>> feature/dashboar-client
   dependencies:
     motion-dom "^12.23.12"
     motion-utils "^12.23.6"
@@ -1545,7 +1645,11 @@ isexe@^2.0.0:
   resolved "https://registry.npmjs.org/isexe/-/isexe-2.0.0.tgz"
   integrity sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
 
+<<<<<<< HEAD
 jiti@^2.5.1:
+=======
+jiti@*, jiti@^2.5.1, jiti@>=1.21.0:
+>>>>>>> feature/dashboar-client
   version "2.5.1"
   resolved "https://registry.npmjs.org/jiti/-/jiti-2.5.1.tgz"
   integrity sha512-twQoecYPiVA5K/h6SxtORw/Bs3ar+mLUtoPSc7iMXzQzK8d7eJ/R09wmTwAjiamETn1cXYPGfNnu7DMoHgu12w==
@@ -1652,7 +1756,11 @@ lightningcss-win32-x64-msvc@1.30.1:
   resolved "https://registry.npmjs.org/lightningcss-win32-x64-msvc/-/lightningcss-win32-x64-msvc-1.30.1.tgz"
   integrity sha512-PVqXh48wh4T53F/1CCu8PIPCxLzWyCnn/9T5W1Jpmdy5h9Cwd+0YQS6/LwhHXSafuc61/xg9Lv5OrCby6a++jg==
 
+<<<<<<< HEAD
 lightningcss@1.30.1:
+=======
+lightningcss@^1.21.0, lightningcss@1.30.1:
+>>>>>>> feature/dashboar-client
   version "1.30.1"
   resolved "https://registry.npmjs.org/lightningcss/-/lightningcss-1.30.1.tgz"
   integrity sha512-xi6IyHML+c9+Q3W0S4fCQJOym42pyurFiJUHEcEyHS0CeKzia4yZDEsLlqOFykxOdHpNy0NmvVO31vcSqAxJCg==
@@ -1759,14 +1867,22 @@ mkdirp@^3.0.1:
 
 motion-dom@^12.23.12:
   version "12.23.12"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.23.12.tgz#87974046e7e61bc4932f36d35e8eab6bb6f3e434"
+=======
+  resolved "https://registry.npmjs.org/motion-dom/-/motion-dom-12.23.12.tgz"
+>>>>>>> feature/dashboar-client
   integrity sha512-RcR4fvMCTESQBD/uKQe49D5RUeDOokkGRmz4ceaJKDBgHYtZtntC/s2vLvY38gqGaytinij/yi3hMcWVcEF5Kw==
   dependencies:
     motion-utils "^12.23.6"
 
 motion-utils@^12.23.6:
   version "12.23.6"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.23.6.tgz#fafef80b4ea85122dd0d6c599a0c63d72881f312"
+=======
+  resolved "https://registry.npmjs.org/motion-utils/-/motion-utils-12.23.6.tgz"
+>>>>>>> feature/dashboar-client
   integrity sha512-eAWoPgr4eFEOFfg2WjIsMoqJTW6Z8MTUCgn/GZ3VRpClWBdnbjryiA3ZSNLyxCTmCQx4RmYX6jX1iWHbenUPNQ==
 
 ms@^2.1.3:
@@ -1791,7 +1907,11 @@ node-releases@^2.0.21:
 
 normalize-range@^0.1.2:
   version "0.1.2"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
+=======
+  resolved "https://registry.npmjs.org/normalize-range/-/normalize-range-0.1.2.tgz"
+>>>>>>> feature/dashboar-client
   integrity sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA==
 
 optionator@^0.9.3:
@@ -1837,11 +1957,14 @@ path-key@^3.1.0:
   resolved "https://registry.npmjs.org/path-key/-/path-key-3.1.1.tgz"
   integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
 
+<<<<<<< HEAD
 phosphor-react@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/phosphor-react/-/phosphor-react-1.4.1.tgz#97b0e034d9937db9b97fe53b186e9646464fd4e7"
   integrity sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==
 
+=======
+>>>>>>> feature/dashboar-client
 picocolors@^1.1.1:
   version "1.1.1"
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz"
@@ -1852,7 +1975,11 @@ picomatch@^2.3.1:
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
+<<<<<<< HEAD
 picomatch@^4.0.3:
+=======
+"picomatch@^3 || ^4", picomatch@^4.0.3:
+>>>>>>> feature/dashboar-client
   version "4.0.3"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-4.0.3.tgz"
   integrity sha512-5gTmgEY/sqK6gFXLIsQNH19lWb4ebPDLA4SdLP7dsWkIXHWlG66oPuVvXSGFPppYZz8ZDZq0dYYrbHfBCVUb1Q==
@@ -1869,10 +1996,17 @@ postcss-scss@^4.0.9:
 
 postcss-value-parser@^4.2.0:
   version "4.2.0"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
 postcss@^8.5.6:
+=======
+  resolved "https://registry.npmjs.org/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz"
+  integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
+
+postcss@^8.0.9, postcss@^8.1.0, postcss@^8.3.5, postcss@^8.4.29, postcss@^8.5.6:
+>>>>>>> feature/dashboar-client
   version "8.5.6"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.6.tgz"
   integrity sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==
@@ -1886,7 +2020,11 @@ prelude-ls@^1.2.1:
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
+<<<<<<< HEAD
 prettier-plugin-css-order@^2.1.2:
+=======
+prettier-plugin-css-order@*, prettier-plugin-css-order@^2.1.2:
+>>>>>>> feature/dashboar-client
   version "2.1.2"
   resolved "https://registry.npmjs.org/prettier-plugin-css-order/-/prettier-plugin-css-order-2.1.2.tgz"
   integrity sha512-vomxPjHI6pOMYcBuouSJHxxQClJXaUpU9rsV9IAO2wrSTZILRRlrxAAR8t9UF6wtczLkLfNRFUwM+ZbGXOONUA==
@@ -1900,7 +2038,11 @@ prettier-plugin-tailwindcss@^0.6.14:
   resolved "https://registry.npmjs.org/prettier-plugin-tailwindcss/-/prettier-plugin-tailwindcss-0.6.14.tgz"
   integrity sha512-pi2e/+ZygeIqntN+vC573BcW5Cve8zUB0SSAGxqpB4f96boZF4M3phPVoOFCeypwkpRYdi7+jQ5YJJUwrkGUAg==
 
+<<<<<<< HEAD
 prettier@^3.6.2:
+=======
+prettier@^3.0, prettier@^3.6.2, prettier@3.x:
+>>>>>>> feature/dashboar-client
   version "3.6.2"
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.6.2.tgz"
   integrity sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==
@@ -1920,7 +2062,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+<<<<<<< HEAD
 react-dom@^19.1.1:
+=======
+"react-dom@^18 || ^19", "react-dom@^18.0.0 || ^19.0.0", react-dom@^19.1.1, "react-dom@>= 16.8", react-dom@>=18:
+>>>>>>> feature/dashboar-client
   version "19.1.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-19.1.1.tgz"
   integrity sha512-Dlq/5LAZgF0Gaz6yiqZCf6VCcZs1ghAJyrsu84Q/GT0gV+mCxbfmKNoGRKBYMJ8IEdGPqu49YWXD02GCknEDkw==
@@ -1947,11 +2093,14 @@ react-router@7.9.1:
     cookie "^1.0.1"
     set-cookie-parser "^2.6.0"
 
+<<<<<<< HEAD
 react-spinners@^0.17.0:
   version "0.17.0"
   resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.17.0.tgz#d518913e2192afaae76c5b781929ea3bd7b1910e"
   integrity sha512-L/8HTylaBmIWwQzIjMq+0vyaRXuoAevzWoD35wKpNTxxtYXWZp+xtgkfD7Y4WItuX0YvdxMPU79+7VhhmbmuTQ==
 
+=======
+>>>>>>> feature/dashboar-client
 react-toastify@^11.0.5:
   version "11.0.5"
   resolved "https://registry.npmjs.org/react-toastify/-/react-toastify-11.0.5.tgz"
@@ -1959,16 +2108,23 @@ react-toastify@^11.0.5:
   dependencies:
     clsx "^2.1.1"
 
+<<<<<<< HEAD
 react@^19.1.1:
+=======
+"react@^18 || ^19", "react@^18.0.0 || ^19.0.0", react@^19.1.1, "react@>= 16.8", react@>=18:
+>>>>>>> feature/dashboar-client
   version "19.1.1"
   resolved "https://registry.npmjs.org/react/-/react-19.1.1.tgz"
   integrity sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==
 
+<<<<<<< HEAD
 reactjs-popup@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/reactjs-popup/-/reactjs-popup-2.0.6.tgz#ff0e340e31d03785ae62f6b6cf62de1ef48c9605"
   integrity sha512-A+tt+x9wdgZiZjv0e2WzYLD3IfFwJALaRaqwrCSXGjo0iQdsry/EtBEbQXRSmQs7cHmOi5eytCiSlOm8k4C+dg==
 
+=======
+>>>>>>> feature/dashboar-client
 resolve-from@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/resolve-from/-/resolve-from-4.0.0.tgz"
@@ -2065,7 +2221,11 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+<<<<<<< HEAD
 tailwindcss@4.1.13, tailwindcss@^4.1.13:
+=======
+tailwindcss@^4.1.13, tailwindcss@4.1.13:
+>>>>>>> feature/dashboar-client
   version "4.1.13"
   resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.1.13.tgz"
   integrity sha512-i+zidfmTqtwquj4hMEwdjshYYgMbOrPzb9a0M3ZgNa0JMoZeFC6bxZvO8yr8ozS6ix2SDz0+mvryPeBs2TFE+w==
@@ -2109,7 +2269,11 @@ ts-api-utils@^2.1.0:
 
 tslib@^2.4.0, tslib@^2.8.0:
   version "2.8.1"
+<<<<<<< HEAD
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
+=======
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz"
+>>>>>>> feature/dashboar-client
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
 
 type-check@^0.4.0, type-check@~0.4.0:
@@ -2129,7 +2293,11 @@ typescript-eslint@^8.39.1:
     "@typescript-eslint/typescript-estree" "8.43.0"
     "@typescript-eslint/utils" "8.43.0"
 
+<<<<<<< HEAD
 typescript@~5.8.3:
+=======
+typescript@>=4.8.4, "typescript@>=4.8.4 <6.0.0", typescript@~5.8.3:
+>>>>>>> feature/dashboar-client
   version "5.8.3"
   resolved "https://registry.npmjs.org/typescript/-/typescript-5.8.3.tgz"
   integrity sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==
@@ -2149,7 +2317,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+<<<<<<< HEAD
 vite@^7.1.2:
+=======
+"vite@^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0", "vite@^5.2.0 || ^6 || ^7", vite@^7.1.2:
+>>>>>>> feature/dashboar-client
   version "7.1.5"
   resolved "https://registry.npmjs.org/vite/-/vite-7.1.5.tgz"
   integrity sha512-4cKBO9wR75r0BeIWWWId9XK9Lj6La5X846Zw9dFfzMRw38IlTk2iCcUt6hsyiDRcPidc55ZParFYDXi0nXOeLQ==
