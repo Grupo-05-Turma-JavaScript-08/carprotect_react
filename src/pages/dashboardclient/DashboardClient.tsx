@@ -76,16 +76,16 @@ function DashboardClient() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [car, setCar] = useState<Car[]>([]);
-  const { user, handleLogout } = useContext(AuthContext);
+  const { user, handleLogout  } = useContext(AuthContext);
   const token = user.token;
 
 
-  //  useEffect(() => {
-  //     if (token === '') {
-  //         ToastAlerta('O Usuário precisa estar logado!', 'warning');
-  //         navigate('/');
-  //     }
-  // }, [token]);
+   useEffect(() => {
+      if (token === '') {
+          ToastAlerta('O Usuário precisa estar logado!', 'warning');
+          navigate('/');
+      }
+  }, [token]);
 
   useEffect(() => {
     buscarCarro();
@@ -127,8 +127,17 @@ function DashboardClient() {
             <h1 className="text-3xl font-bold">Dashboard de Carros</h1>
           </div>
           <div className="flex-none flex items-center gap-4">
+            <Link to='/cadastrarcarro'>
             <button className="px-6 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">
               Novo Carro
+            </button>
+            </Link>
+
+            <button
+              onClick={handleLogout}
+              className="px-6 py-2 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600"
+            >
+              Sair
             </button>
           </div>
         </header>

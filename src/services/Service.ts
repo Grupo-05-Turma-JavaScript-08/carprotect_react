@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-     baseURL: "https://carprotect.onrender.com"
+     baseURL: "https://carprotect.onrender.com",
+     timeout: 5000
     })
 
 
@@ -30,6 +31,6 @@ export const atualizar = async (url: string, dados: Object, setDados: Function, 
     setDados(resposta.data)
 }
 
-export const deletar = async (url: string, header: Object) => {
-    await api.delete(url, header);
+export const deletar = async (url: string, config: Object) => {
+    await api.delete(url, config);
 }

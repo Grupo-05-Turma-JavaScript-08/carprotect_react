@@ -8,7 +8,7 @@ export default interface Car {
     licensePlate: string,
     price: number,
     description: string,
-    manufacturingYear: Date,
+    manufacturingYear: string,
     premiumAmount: number,
     insuranceStatus: string,
     user: User | null
