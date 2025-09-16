@@ -1,4 +1,4 @@
-import { CarBatteryIcon, CarIcon, ClockIcon, CurrencyDollarIcon, KeyIcon, TireIcon, ToolboxIcon, TrophyIcon } from "@phosphor-icons/react"
+import { CarBatteryIcon, ClockIcon, KeyIcon, TireIcon, TrophyIcon } from "@phosphor-icons/react"
 
 function Home() {
     return (
