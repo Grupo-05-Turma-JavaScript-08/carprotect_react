@@ -142,13 +142,13 @@ function DashboardClient() {
             <div className="bg-green-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-green-700">Valor Total dos Carros</h3>
               <p className="text-2xl font-bold text-green-900">
-                R$ {car.reduce((total, carro) => total + carro.price, 0)}
+                R$ {car.reduce((total, carro) => total + Number(carro.price), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
             <div className="bg-yellow-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold text-yellow-700">Prêmios a Pagar</h3>
               <p className="text-2xl font-bold text-yellow-900">
-                R$ {car.reduce((total, carro) => total + carro.premiumAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                R$ {car.reduce((total, carro) => total + Number(carro.premiumAmount), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
             <div className="bg-purple-50 p-4 rounded-lg">
@@ -214,13 +214,13 @@ function DashboardClient() {
                           }
                         </span>
                       </div>
-                      <div className="col-span-2  ">
-                        <Link to={`/editarelectronico/${carro.id}`}>
-                          <button className="p-2  text-white transition hover:text-black rounded bg-[#1393b5]
+                      <div className="col-span-2 flex flex-row gap-2 ">
+                        <Link to={`/editarcarro/${carro.id}`}>
+                          <button className="p-2 ml-2 text-white transition hover:text-black rounded bg-[#1393b5]
                       hover:bg-[#13b7dc] active:bg-[#13b7dc]/20" title="Editar"><PencilSimple size={25} /></button>
                         </Link>
 
-                        <Link to={`/deletareletronico/${carro.id}`}>
+                        <Link to={`/deletarcarro/${carro.id}`}>
                           <button className="p-2  text-white transition hover:text-black rounded bg-[#1393b5]
                       hover:bg-[#13b7dc] active:bg-[#13b7dc]/20" title="Excluir"><Trash size={25} /></button>
                         </Link>

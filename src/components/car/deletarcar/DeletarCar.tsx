@@ -63,7 +63,7 @@ function DeletarCar() {
     }
 
     function retornar() {
-        navigate("/carros");
+        navigate("/dashboard");
     }
 
   return (
