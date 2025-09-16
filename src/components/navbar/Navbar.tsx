@@ -6,7 +6,7 @@ function Navbar() {
       <nav className="max-w-7xl mx-auto flex items-center justify-between p-4">
         
         <div className="flex items-center gap-6">
-          <Link to="/home" className="text-2xl font-bold">
+          <Link to="/" className="text-2xl font-bold">
             CarProtect
           </Link>
 
@@ -22,14 +22,14 @@ function Navbar() {
 
         <div className="flex gap-4">
           <Link
-            to="/area-cliente"
+            to="/login"
             className="bg-white text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition"
           >
             Área do Cliente
           </Link>
 
           <Link
-            to="/area-corretor"
+            to="/login"
             className="bg-cyan-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-cyan-500 transition"
           >
             Área do Corretor

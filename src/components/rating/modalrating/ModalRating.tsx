@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import { X } from "@phosphor-icons/react";
 
-const ModalRating: React.FC = () => {
+interface ModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+
+const ModalRating: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [open, setOpen] = useState(false);
   const closeModal = () => setOpen(false);
 
@@ -59,11 +65,10 @@ const ModalRating: React.FC = () => {
                       : "none"
                   }
                   stroke="currentColor"
-                  className={`h-10 w-10 cursor-pointer transition-colors duration-200 ${
-                    starValue <= (hoverRating || rating)
+                  className={`h-10 w-10 cursor-pointer transition-colors duration-200 ${starValue <= (hoverRating || rating)
                       ? "text-yellow-500"
                       : "text-gray-300"
-                  }`}
+                    }`}
                   onClick={() => setRating(starValue)}
                   onMouseEnter={() => setHoverRating(starValue)}
                   onMouseLeave={() => setHoverRating(0)}

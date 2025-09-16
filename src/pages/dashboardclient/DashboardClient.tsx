@@ -1,79 +1,119 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { buscar } from "../../services/Service";
+import { ToastAlerta } from "../../utils/ToastAlerta";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import type Car from "../../models/Car";
 
-interface Car {
-    id: number;
-    model: string;
-    licensePlate: string;
-    price: number;
-    description: string;
-    manufacturingYear: Date;
-    premiumAmount: number;
-    insuranceStatus: string;
-}
+// interface Car {
+//     id: number;
+//     model: string;
+//     licensePlate: string;
+//     price: number;
+//     description: string;
+//     manufacturingYear: Date;
+//     premiumAmount: number;
+//     insuranceStatus: string;
+// }
 
-const carrosFicticios: Car[] = [
-    {
-        id: 1,
-        model: 'Ford Ka',
-        licensePlate: 'ABC-1234',
-        price: 45000,
-        description: 'Compacto ideal para a cidade.',
-        manufacturingYear: new Date('2019-03-10'),
-        premiumAmount: 500,
-        insuranceStatus: 'insured',
-    },
-    {
-        id: 2,
-        model: 'Volkswagen Gol',
-        licensePlate: 'DEF-5678',
-        price: 52000,
-        description: 'Carro popular, excelente custo-benefício.',
-        manufacturingYear: new Date('2020-07-22'),
-        premiumAmount: 0,
-        insuranceStatus: 'not-insured',
-    },
-    {
-        id: 3,
-        model: 'Hyundai HB20',
-        licensePlate: 'GHI-9012',
-        price: 61000,
-        description: 'Design moderno e bom desempenho.',
-        manufacturingYear: new Date('2021-02-15'),
-        premiumAmount: 700,
-        insuranceStatus: 'insured',
-    },
-    {
-        id: 4,
-        model: 'Chevrolet Onix',
-        licensePlate: 'JKL-3456',
-        price: 65000,
-        description: 'O mais vendido do Brasil, com muita tecnologia.',
-        manufacturingYear: new Date('2022-04-01'),
-        premiumAmount: 850,
-        insuranceStatus: 'insured',
-    },
-    {
-        id: 5,
-        model: 'Toyota Corolla',
-        licensePlate: 'MNO-7890',
-        price: 120000,
-        description: 'Sedan de luxo, sinônimo de confiabilidade.',
-        manufacturingYear: new Date('2023-11-20'),
-        premiumAmount: 0,
-        insuranceStatus: 'not-insured',
-    },
-];
+// const carrosFicticios: Car[] = [
+//     {
+//         id: 1,
+//         model: 'Ford Ka',
+//         licensePlate: 'ABC-1234',
+//         price: 45000,
+//         description: 'Compacto ideal para a cidade.',
+//         manufacturingYear: new Date('2019-03-10'),
+//         premiumAmount: 500,
+//         insuranceStatus: 'insured',
+//     },
+//     {
+//         id: 2,
+//         model: 'Volkswagen Gol',
+//         licensePlate: 'DEF-5678',
+//         price: 52000,
+//         description: 'Carro popular, excelente custo-benefício.',
+//         manufacturingYear: new Date('2020-07-22'),
+//         premiumAmount: 0,
+//         insuranceStatus: 'not-insured',
+//     },
+//     {
+//         id: 3,
+//         model: 'Hyundai HB20',
+//         licensePlate: 'GHI-9012',
+//         price: 61000,
+//         description: 'Design moderno e bom desempenho.',
+//         manufacturingYear: new Date('2021-02-15'),
+//         premiumAmount: 700,
+//         insuranceStatus: 'insured',
+//     },
+//     {
+//         id: 4,
+//         model: 'Chevrolet Onix',
+//         licensePlate: 'JKL-3456',
+//         price: 65000,
+//         description: 'O mais vendido do Brasil, com muita tecnologia.',
+//         manufacturingYear: new Date('2022-04-01'),
+//         premiumAmount: 850,
+//         insuranceStatus: 'insured',
+//     },
+//     {
+//         id: 5,
+//         model: 'Toyota Corolla',
+//         licensePlate: 'MNO-7890',
+//         price: 120000,
+//         description: 'Sedan de luxo, sinônimo de confiabilidade.',
+//         manufacturingYear: new Date('2023-11-20'),
+//         premiumAmount: 0,
+//         insuranceStatus: 'not-insured',
+//     },
+// ];
 
 function DashboardClient() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [carros, setCarros] = useState<Car[]>([]);
+  // const [carros, setCarros] = useState<Car[]>([]);
+
+  const navigate = useNavigate();
+
+  const [car, setCar] = useState<Car[]>([]);
+  const {user, handleLogout} = useContext(AuthContext);
+  const token = user.token;
+  
+
+  // useEffect(() => {
+  //   if (token === '') {
+  //     ToastAlerta('Você precisa estar logado', 'info');
+  //     navigate('/login');
+  //   }
+  // }, [token]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setCarros(carrosFicticios);
+    buscarCarro();
+  }, [car.length]);
+
+  async function buscarCarro() {
+    setIsLoading(true);
+
+    try {
+      setIsLoading(true);
+      await buscar("/car", setCar, { headers: { Authorization: token } });
+    } catch (error: any) {
+      if(error.toString().includes('401')) {
+        handleLogout();
+      }
+    } finally {
       setIsLoading(false);
-    }, 1500);
-  }, []);
+    }
+  }
+
+
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setCarros(carrosFicticios);
+  //     setIsLoading(false);
+  //   }, 1500);
+  // }, []);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -102,31 +142,31 @@ function DashboardClient() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
                 <div className="bg-blue-50 p-4 rounded-lg">
                     <h3 className="text-lg font-semibold text-blue-700">Total de Carros</h3>
-                    <p className="text-2xl font-bold text-blue-900">{carros.length}</p>
+                    <p className="text-2xl font-bold text-blue-900">{car.length}</p>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
                     <h3 className="text-lg font-semibold text-green-700">Valor Total dos Carros</h3>
                     <p className="text-2xl font-bold text-green-900">
-                        R$ {carros.reduce((total, carro) => total + carro.price, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                        R$ {car.reduce((total, carro) => total + carro.price, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </p>
                 </div>
                 <div className="bg-yellow-50 p-4 rounded-lg">
                     <h3 className="text-lg font-semibold text-yellow-700">Prêmios a Pagar</h3>
                     <p className="text-2xl font-bold text-yellow-900">
-                        R$ {carros.reduce((total, carro) => total + carro.premiumAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                        R$ {car.reduce((total, carro) => total + carro.premiumAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                     </p>
                 </div>
                 <div className="bg-purple-50 p-4 rounded-lg">
                     <h3 className="text-lg font-semibold text-purple-700">Carros Segurados</h3>
                     <p className="text-2xl font-bold text-purple-900">
-                        {carros.filter(carro => carro.insuranceStatus === 'insured').length} de {carros.length}
+                        {car.filter(carro => carro.insuranceStatus === 'insured').length} de {car.length}
                     </p>
                 </div>
             </div>
         </div>
 
         <div className="mt-8">
-            {carros.length === 0 ? (
+            {car.length === 0 ? (
                 <p className="text-center text-gray-500">Nenhum carro encontrado.</p>
             ) : (
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
@@ -142,7 +182,7 @@ function DashboardClient() {
                         </div>
                     </div>
                     <div className="divide-y divide-gray-200">
-                        {carros.map((carro, index) => (
+                        {car.map((carro, index) => (
                             <div 
                                 key={carro.id} 
                                 className={`px-6 py-4 hover:bg-gray-50 transition-colors ${

@@ -1,7 +1,4 @@
 {
-<<<<<<< HEAD
-  "plugins": ["prettier-plugin-tailwindcss"]
-=======
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"
@@ -14,5 +11,7 @@
     "import/newline-after-import": "error",
     "import/no-duplicates": "error"
   }
->>>>>>> feature/dashboar-client
+}
+{
+  "plugins": ["prettier-plugin-tailwindcss"]
 }

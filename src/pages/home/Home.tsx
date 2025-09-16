@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ModalRating from "../../components/rating/modalrating/ModalRating";
+import { CarBatteryIcon, ClockIcon, KeyIcon, TireIcon, TrophyIcon } from "@phosphor-icons/react";
 
 function Home() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -91,22 +92,26 @@ function Home() {
                                         type="text"
                                         placeholder="Nome"
                                         className="p-2 rounded border border-gray-300 bg-white"
+                                        onChange={handleInputChange}
                                     />
                                     <input
                                         type="email"
                                         placeholder="E-mail"
                                         className="p-2 rounded border border-gray-300 bg-white"
+                                        onChange={handleInputChange}
                                     />
                                     <div className="flex flex-col sm:flex-row gap-2">
                                         <input
                                             type="tel"
                                             placeholder="Telefone"
                                             className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white"
+                                            onChange={handleInputChange}
                                         />
                                         <input
                                             type="tel"
                                             placeholder="Celular"
                                             className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white"
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-2">
@@ -119,6 +124,7 @@ function Home() {
                                             type="text"
                                             placeholder="Montadora"
                                             className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white"
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-2">
@@ -126,11 +132,13 @@ function Home() {
                                             type="text"
                                             placeholder="Modelo do Veículo"
                                             className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white"
+                                            onChange={handleInputChange}
                                         />
                                         <input
                                             type="text"
                                             placeholder="Ano do Veículo"
                                             className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white"
+                                            onChange={handleInputChange}
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-2">
@@ -138,6 +146,7 @@ function Home() {
                                             type="text"
                                             placeholder="Placa do Veículo"
                                             className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white"
+                                            onChange={handleInputChange}
                                         />
                                         <select className="p-2 rounded border border-gray-300 w-full sm:w-1/2 bg-white">
                                             <option>Já possui o Veículo?</option>
@@ -150,6 +159,7 @@ function Home() {
                                         type="submit"
                                         className="bg-sky-900 text-white font-bold py-3 rounded-lg hover:bg-sky-800 transition"
                                         onClick={handleQuoteClick}
+                                        
 
                                     >
                                         COTAR AGORA

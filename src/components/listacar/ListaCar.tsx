@@ -1,13 +1,28 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type Car from "../../models/Car";
 import { buscar } from "../../services/Service";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ToastAlerta } from "../../utils/ToastAlerta";
+import { nav } from "framer-motion/client";
+import { useNavigate } from "react-router-dom";
 
 function ListaCar() {
 
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [car, setCar] = useState<Car[]>([]);
+  const {user, handleLogout} = useContext(AuthContext);
+  const token = user.token;
+  
+
+  useEffect(() => {
+    if (token === '') {
+      ToastAlerta('Você precisa estar logado', 'info');
+      navigate('/login');
+    }
+  }, [token]);
 
   useEffect(() => {
     buscarCarro();
@@ -16,9 +31,16 @@ function ListaCar() {
   async function buscarCarro() {
     setIsLoading(true);
 
-    await buscar("car", setCar);
-
-    setIsLoading(false);
+    try {
+      setIsLoading(true);
+      await buscar("car", setCar, { headers: { Authorization: token } });
+    } catch (error: any) {
+      if(error.toString().includes('401')) {
+        handleLogout();
+      }
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
