@@ -22,14 +22,14 @@ function Navbar() {
 
         <div className="flex gap-4">
           <Link
-            to="/login"
+            to="/logar"
             className="bg-white text-gray-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition"
           >
             Área do Cliente
           </Link>
 
           <Link
-            to="/login"
+            to="/logar"
             className="bg-cyan-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-cyan-500 transition"
           >
             Área do Corretor

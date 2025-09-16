@@ -8,9 +8,10 @@ import Home from './pages/home/Home';
 import AuthPage from './pages/authpages/AuthPages';
 import Sobre from './pages/sobre/sobre';
 import Contato from './pages/contato/Contato';
-import FormCar from './components/formcar/FormCar';
-import DeletarCar from './components/deletarcar/DeletarCar';
+import FormCar from './components/car/formcar/FormCar';
+import DeletarCar from './components/car/deletarcar/DeletarCar';
 import Footer from './components/footer/Footer';
+import ListaCar from './components/car/listacar/ListaCar';
 
 function App() {
   return (
@@ -23,11 +24,12 @@ function App() {
         <Routes>
           {/* Adicionado: A sua dashboard agora está em uma rota, como deve ser. */}
           <Route path="/" element={<Home />} />
-          <Route path='/login'element={<AuthPage />} />
+          <Route path='/logar'element={<AuthPage />} />
           <Route path="/quem-somos" element={<Sobre />} />
           <Route path='/contato' element={<Contato />} />
-          <Route path="/dashboardcliente" element={<DashboardClient />} />
+          <Route path="/dashboard" element={<DashboardClient />} />
           <Route path="/dashboardseguradora"  />
+          <Route path='/carros' element={<ListaCar />} />
           <Route path='/cadastrarcarro' element={<FormCar />} />
           <Route path='/editarcarro/:id' element={<FormCar />} />
           <Route path='/deletarcarro/:id' element={<DeletarCar />} />

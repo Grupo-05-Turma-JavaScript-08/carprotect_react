@@ -1,3 +1,6 @@
+import type Insurance from "./Insurance";
+import type User from "./User";
+
 export default interface Car {
     
     id: number,
@@ -8,5 +11,7 @@ export default interface Car {
     manufacturingYear: Date,
     premiumAmount: number,
     insuranceStatus: string,
+    user: User | null
+    insurance: Insurance | null
 
 }

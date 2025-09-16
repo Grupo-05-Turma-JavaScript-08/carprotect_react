@@ -1,51 +1,53 @@
 import { useContext, useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import type Car from "../../models/Car";
-import { buscar } from "../../services/Service";
-import { AuthContext } from "../../contexts/AuthContext";
-import { ToastAlerta } from "../../utils/ToastAlerta";
-import { nav } from "framer-motion/client";
 import { useNavigate } from "react-router-dom";
+import type Insurance from "../../../models/Insurance";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { buscar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlert";
+import { motion } from "framer-motion";
 
-function ListaCar() {
+function ListaInsurance() {
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [car, setCar] = useState<Car[]>([]);
-  const {user, handleLogout} = useContext(AuthContext);
-  const token = user.token;
-  
+    const [insurances, setInsurances] = useState<Insurance[]>([]);
 
-  useEffect(() => {
-    if (token === '') {
-      ToastAlerta('Você precisa estar logado', 'info');
-      navigate('/login');
+    const { user, handleLogout } = useContext(AuthContext);
+    const token = user.token;
+
+    useEffect(() => {
+        if (token === '') {
+            ToastAlerta('Sua sessão expirou, por favor, logue novamente!', 'info');
+            navigate('/');
+        }
+    }, [token]);
+
+    useEffect(() => {
+        buscarInsurances();
+    }, [insurances.length]);
+
+    async function buscarInsurances() {
+        try {
+
+            setIsLoading(true);
+
+            await buscar('/plano', setInsurances, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('401')) {
+                handleLogout();
+            }
+        } finally {
+            setIsLoading(false);
+        }
     }
-  }, [token]);
 
-  useEffect(() => {
-    buscarCarro();
-  }, [car.length]);
 
-  async function buscarCarro() {
-    setIsLoading(true);
-
-    try {
-      setIsLoading(true);
-      await buscar("car", setCar, { headers: { Authorization: token } });
-    } catch (error: any) {
-      if(error.toString().includes('401')) {
-        handleLogout();
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  return (
-    <>
-      <div className="p-4 ml-80  mr-20 mx-auto">
+    return (
+        <>
+        <div className="p-4 ml-80  mr-20 mx-auto">
         {isLoading && (
           <div className="fixed inset-0 flex flex-col items-center justify-center backdrop-blur-sm z-50">
             <div className="relative">
@@ -83,8 +85,8 @@ function ListaCar() {
           
         </div>
       </div>
-    </>
-  );
+        </>
+    )
 }
 
-export default ListaCar;
+export default ListaInsurance

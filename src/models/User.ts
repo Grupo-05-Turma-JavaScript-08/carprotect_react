@@ -1,3 +1,4 @@
+import type Car from "./Car";
 
 export default interface User {
     id: number;
@@ -5,5 +6,6 @@ export default interface User {
     username: string;
     password: string;
     photoUrl: string;
+    admin?: boolean;
     car?: Car[] | null
 }

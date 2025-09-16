@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { buscar } from "../../services/Service";
 import { ToastAlerta } from "../../utils/ToastAlerta";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import type Car from "../../models/Car";
+import { PencilSimple, Trash } from "phosphor-react";
 
 // interface Car {
 //     id: number;
@@ -70,51 +71,45 @@ import type Car from "../../models/Car";
 // ];
 
 function DashboardClient() {
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  // const [carros, setCarros] = useState<Car[]>([]);
-
   const navigate = useNavigate();
 
-  const [car, setCar] = useState<Car[]>([]);
-  const {user, handleLogout} = useContext(AuthContext);
-  const token = user.token;
-  
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // useEffect(() => {
-  //   if (token === '') {
-  //     ToastAlerta('Você precisa estar logado', 'info');
-  //     navigate('/login');
-  //   }
+  const [car, setCar] = useState<Car[]>([]);
+  const { user, handleLogout } = useContext(AuthContext);
+  const token = user.token;
+
+
+  //  useEffect(() => {
+  //     if (token === '') {
+  //         ToastAlerta('O Usuário precisa estar logado!', 'warning');
+  //         navigate('/');
+  //     }
   // }, [token]);
 
   useEffect(() => {
     buscarCarro();
   }, [car.length]);
 
+
   async function buscarCarro() {
     setIsLoading(true);
 
     try {
       setIsLoading(true);
-      await buscar("/car", setCar, { headers: { Authorization: token } });
+      await buscar("/carro", setCar, {
+        headers: { Authorization: token }
+      })
+
     } catch (error: any) {
-      if(error.toString().includes('401')) {
+      if (error.toString().includes('401')) {
         handleLogout();
       }
     } finally {
       setIsLoading(false);
     }
+
   }
-
-
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setCarros(carrosFicticios);
-  //     setIsLoading(false);
-  //   }, 1500);
-  // }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
       <div className="p-4 mx-auto max-w-7xl flex-grow">
@@ -123,109 +118,120 @@ function DashboardClient() {
             <span className="text-xl font-bold text-gray-700">Carregando dados...</span>
           </div>
         )}
-        
+
         <header className="flex items-center justify-between py-6">
-            <div className="flex-none">
-                <img src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" alt="Logo da Empresa" className="w-20" />
-            </div>
-            <div className="flex-grow text-center">
-                <h1 className="text-3xl font-bold">Dashboard de Carros</h1>
-            </div>
-            <div className="flex-none flex items-center gap-4">
-                <button className="px-6 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">
-                    Novo Carro
-                </button>
-            </div>
+          <div className="flex-none">
+            <img src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" alt="Logo da Empresa" className="w-20" />
+          </div>
+          <div className="flex-grow text-center">
+            <h1 className="text-3xl font-bold">Dashboard de Carros</h1>
+          </div>
+          <div className="flex-none flex items-center gap-4">
+            <button className="px-6 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">
+              Novo Carro
+            </button>
+          </div>
         </header>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
-                <div className="bg-blue-50 p-4 rounded-lg">
-                    <h3 className="text-lg font-semibold text-blue-700">Total de Carros</h3>
-                    <p className="text-2xl font-bold text-blue-900">{car.length}</p>
-                </div>
-                <div className="bg-green-50 p-4 rounded-lg">
-                    <h3 className="text-lg font-semibold text-green-700">Valor Total dos Carros</h3>
-                    <p className="text-2xl font-bold text-green-900">
-                        R$ {car.reduce((total, carro) => total + carro.price, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                    </p>
-                </div>
-                <div className="bg-yellow-50 p-4 rounded-lg">
-                    <h3 className="text-lg font-semibold text-yellow-700">Prêmios a Pagar</h3>
-                    <p className="text-2xl font-bold text-yellow-900">
-                        R$ {car.reduce((total, carro) => total + carro.premiumAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                    </p>
-                </div>
-                <div className="bg-purple-50 p-4 rounded-lg">
-                    <h3 className="text-lg font-semibold text-purple-700">Carros Segurados</h3>
-                    <p className="text-2xl font-bold text-purple-900">
-                        {car.filter(carro => carro.insuranceStatus === 'insured').length} de {car.length}
-                    </p>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold text-blue-700">Total de Carros</h3>
+              <p className="text-2xl font-bold text-blue-900">{car.length}</p>
             </div>
+            <div className="bg-green-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold text-green-700">Valor Total dos Carros</h3>
+              <p className="text-2xl font-bold text-green-900">
+                R$ {car.reduce((total, carro) => total + carro.price, 0)}
+              </p>
+            </div>
+            <div className="bg-yellow-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold text-yellow-700">Prêmios a Pagar</h3>
+              <p className="text-2xl font-bold text-yellow-900">
+                R$ {car.reduce((total, carro) => total + carro.premiumAmount, 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+              </p>
+            </div>
+            <div className="bg-purple-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold text-purple-700">Carros Segurados</h3>
+              <p className="text-2xl font-bold text-purple-900">
+                {car.filter(carro => carro.insuranceStatus === 'insured').length} de {car.length}
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="mt-8">
-            {car.length === 0 ? (
-                <p className="text-center text-gray-500">Nenhum carro encontrado.</p>
-            ) : (
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                    {/* Cabeçalho da tabela */}
-                    <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
-                        <div className="grid grid-cols-12 gap-4 text-sm font-medium text-gray-700">
-                            <div className="col-span-3">Modelo</div>
-                            <div className="col-span-2">Placa</div>
-                            <div className="col-span-1">Ano</div>
-                            <div className="col-span-2">Preço</div>
-                            <div className="col-span-2">Status Seguro</div>
-                            <div className="col-span-2">Prêmio</div>
-                        </div>
-                    </div>
-                    <div className="divide-y divide-gray-200">
-                        {car.map((carro, index) => (
-                            <div 
-                                key={carro.id} 
-                                className={`px-6 py-4 hover:bg-gray-50 transition-colors ${
-                                    index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
-                                }`}
-                            >
-                                <div className="grid grid-cols-12 gap-4 items-center text-sm">
-                                    <div className="col-span-3">
-                                        <p className="font-medium text-gray-900">{carro.model}</p>
-                                        <p className="text-gray-500 text-xs mt-1">{carro.description}</p>
-                                    </div>
-                                    <div className="col-span-2">
-                                        <span className="text-gray-900">{carro.licensePlate}</span>
-                                    </div>
-                                    <div className="col-span-1">
-                                        <span className="text-gray-900">{new Date(carro.manufacturingYear).getFullYear()}</span>
-                                    </div>
-                                    <div className="col-span-2">
-                                        <span className="text-gray-900 font-medium">R$ {carro.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
-                                    </div>
-                                    <div className="col-span-2">
-                                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                                            carro.insuranceStatus === 'insured' 
-                                                ? 'bg-green-100 text-green-800' 
-                                                : 'bg-red-100 text-red-800'
-                                        }`}>
-                                            {carro.insuranceStatus === 'insured' ? 'Segurado' : 'Não Segurado'}
-                                        </span>
-                                    </div>
-                                    <div className="col-span-2">
-                                        <span className="text-gray-900">
-                                            {carro.premiumAmount > 0 
-                                                ? `R$ ${carro.premiumAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` 
-                                                : '-'
-                                            }
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+          {car.length === 0 ? (
+            <p className="text-center text-gray-500">Nenhum carro encontrado.</p>
+          ) : (
+            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              {/* Cabeçalho da tabela */}
+              <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
+                <div className="grid grid-cols-14 gap-4 text-sm font-medium text-gray-700">
+                  <div className="col-span-3">Modelo</div>
+                  <div className="col-span-2">Placa</div>
+                  <div className="col-span-1">Ano</div>
+                  <div className="col-span-2">Preço</div>
+                  <div className="col-span-2">Status Seguro</div>
+                  <div className="col-span-2">Prêmio</div>
+                  <div className="col-span-2">Ações</div>
                 </div>
-            )}
+              </div>
+              <div className="divide-y divide-gray-200">
+                {car.map((carro, index) => (
+                  <div
+                    key={carro.id}
+                    className={`px-6 py-4 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
+                      }`}
+                  >
+                    <div className="grid grid-cols-14 gap-4 items-center text-sm">
+                      <div className="col-span-3">
+                        <p className="font-medium text-gray-900">{carro.model}</p>
+                        <p className="text-gray-500 text-xs mt-1">{carro.description}</p>
+                      </div>
+                      <div className="col-span-2">
+                        <span className="text-gray-900">{carro.licensePlate}</span>
+                      </div>
+                      <div className="col-span-1">
+                        <span className="text-gray-900">{new Date(carro.manufacturingYear).getFullYear()}</span>
+                      </div>
+                      <div className="col-span-2">
+                        <span className="text-gray-900 font-medium">R$ {carro.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                      </div>
+                      <div className="col-span-2">
+                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${carro.insuranceStatus !== null
+                            ? 'bg-green-100 text-green-800'
+                            : 'bg-red-100 text-red-800'
+                          }`}>
+                          {carro.insurance !== null ? 'Segurado' : 'Não Segurado'}
+                        </span>
+                      </div>
+                      <div className="col-span-2">
+                        <span className="text-gray-900">
+                          {carro.premiumAmount > 0
+                            ? `R$ ${carro.premiumAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+                            : '-'
+                          }
+                        </span>
+                      </div>
+                      <div className="col-span-2  ">
+                        <Link to={`/editarelectronico/${carro.id}`}>
+                          <button className="p-2  text-white transition hover:text-black rounded bg-[#1393b5]
+                      hover:bg-[#13b7dc] active:bg-[#13b7dc]/20" title="Editar"><PencilSimple size={25} /></button>
+                        </Link>
+
+                        <Link to={`/deletareletronico/${carro.id}`}>
+                          <button className="p-2  text-white transition hover:text-black rounded bg-[#1393b5]
+                      hover:bg-[#13b7dc] active:bg-[#13b7dc]/20" title="Excluir"><Trash size={25} /></button>
+                        </Link>
+
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
@@ -271,15 +277,15 @@ function DashboardClient() {
             </div>
             <div className="flex justify-end">
               <p className="text-lg mt-4">Copyright © 2025</p>
-            <div className="text-center md:text-right">
+              <div className="text-center md:text-right">
 
                 {/*} 
                 <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors">
                     Suporte
                 </button>{*/}
+              </div>
             </div>
           </div>
-            </div>
         </div>
       </footer>
     </div>

@@ -1,7 +1,7 @@
 import { createContext, useState, type ReactNode } from "react";
 import type UserLogin from "../models/UserLogin";
-import { login } from "../services/Service";
 import { ToastAlerta } from "../utils/ToastAlerta";
+import { login } from "../services/Service";
 
 
 
@@ -26,6 +26,7 @@ export function AuthProvider({children} : AuthProviderProps) {
         username: '',
         password: '',
         photoUrl: '',
+        admin: false,
         token: ''
     });
 
@@ -49,6 +50,7 @@ export function AuthProvider({children} : AuthProviderProps) {
             username: '',
             password: '',
             photoUrl: '',
+            admin: false,
             token: ''
         });
     }

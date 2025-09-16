@@ -4,5 +4,6 @@ export default interface UserLogin {
     username: string;
     password: string;
     photoUrl: string;
+    admin?: boolean;
     token: string;
 }
