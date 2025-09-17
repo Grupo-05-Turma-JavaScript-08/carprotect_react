@@ -9,13 +9,13 @@ export type SupportPerson = {
 };
 
 const supportTeam: SupportPerson[] = [
-  { name: "Evertton", role: "Desenvolvedor", email: "evertton@suporte.com", linkedin: "https://linkedin.com/in/evertton", avatarUrl: "https://i.ibb.co/gFgV1nmb/eu-2.jpg" },
-  { name: "Felipe", role: "Desenvolvedor", email: "felipealves.santos93@gmail.com", linkedin: "https://www.linkedin.com/in/felipe-alves-949a58296/", avatarUrl: "https://i.ibb.co/xSd4GqRL/Image-6.jpg" },
-  { name: "Gabriel", role: "Desenvolvedor", email: "gmartins9042@gmail.com", linkedin: "https://www.linkedin.com/in/gabrielmartins-/", avatarUrl: "https://i.ibb.co/G41sgxm5/IMG-0004.jpg" },
-  { name: "Larrisa", role: "Desenvolvedor", email: "rrs.larissa@gmail.com", linkedin: "https://www.linkedin.com/in/larissa-r-ruiz/", avatarUrl: "https://i.ibb.co/S7f1BfPc/eu.jpg" },
-  { name: "Matheus", role: "Desenvolvedor", email: "matheus@suporte.com", linkedin: "https://linkedin.com/in/matheus", avatarUrl: "https://i.ibb.co/5WQXH3Tr/teste007.png" },
-  { name: "Micheli", role: "Desenvolvedor", email: "michelimelki@gmail.com", linkedin: "https://www.linkedin.com/in/micheli-martins/", avatarUrl: "https://i.ibb.co/sphxq039/Image-28.jpg" },
-  { name: "Viviane", role: "Desenvolvedor", email: "viviane@suporte.com", linkedin: "https://linkedin.com/in/viviane", avatarUrl: "https://i.ibb.co/M5KQ7h4f/viviane.jpg " }
+  { name: "Evertton", role: "Desenvolvedor", email: "dev.ewerttongoncalves@gmail.com", linkedin: "https://www.linkedin.com/in/ewerttongoncalves/", avatarUrl: " https://i.ibb.co/MDFd3yTw/Image-29.jpg" },
+  { name: "Felipe", role: "Desenvolvedor", email: "felipealves.santos93@gmail.com", linkedin: "https://www.linkedin.com/in/felipe-alves-949a58296/", avatarUrl: " https://i.ibb.co/cKBFYXc2/Image-35.jpg" },
+  { name: "Gabriel", role: "Desenvolvedor", email: "gmartins9042@gmail.com", linkedin: "https://www.linkedin.com/in/gabrielmartins-/", avatarUrl: "https://i.ibb.co/ZpPT0fvs/Image-32.jpg" },
+  { name: "Larrisa", role: "Desenvolvedora", email: "rrs.larissa@gmail.com", linkedin: "https://www.linkedin.com/in/larissa-r-ruiz/", avatarUrl: "https://i.ibb.co/fGD4ggFS/Image-34.jpg" },
+  { name: "Matheus", role: "Desenvolvedor", email: "matheus97p.q@gmail.com", linkedin: "https://www.linkedin.com/in/matheuspx97/", avatarUrl: "https://i.ibb.co/kVSH3yGF/Image-31.jpg" },
+  { name: "Micheli", role: "Desenvolvedora", email: "michelimelki@gmail.com", linkedin: "https://www.linkedin.com/in/micheli-martins/", avatarUrl: "https://i.ibb.co/6Rtq0stv/Image-33.jpg" },
+  { name: "Viviane", role: "Desenvolvedora", email: "vjsantos.viviane@gmail.com", linkedin: "https://www.linkedin.com/in/vsantosj/", avatarUrl: "https://i.ibb.co/CpkVrCSf/Image-30.jpg" }
 ];
 
 export default function SupportTeamCard() {
