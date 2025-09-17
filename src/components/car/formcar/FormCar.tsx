@@ -249,12 +249,11 @@ function FormCar() {
                 <select
                   id="insuranceId"
                   className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] focus:border-[#034153] focus:outline-none transition-colors"
-                  onChange={(e) =>
-                    setCar({
-                      ...car,
-                      insurance: { id: Number(e.target.value) }
-                    })
-                  }
+                  onChange={(e) => {
+                    const insuranceId = Number(e.target.value)
+                    const insurance = insurances.find(i => i.id === insuranceId)
+                    setCar({ ...car, insurance: insurance || null })
+                  }}
                   value={car.insurance?.id || ""}
                   required
                 >
