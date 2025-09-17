@@ -4,71 +4,7 @@ import { ToastAlerta } from "../../utils/ToastAlerta";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import type Car from "../../models/Car";
-import { PencilSimple, Trash } from "phosphor-react";
-
-// interface Car {
-//     id: number;
-//     model: string;
-//     licensePlate: string;
-//     price: number;
-//     description: string;
-//     manufacturingYear: Date;
-//     premiumAmount: number;
-//     insuranceStatus: string;
-// }
-
-// const carrosFicticios: Car[] = [
-//     {
-//         id: 1,
-//         model: 'Ford Ka',
-//         licensePlate: 'ABC-1234',
-//         price: 45000,
-//         description: 'Compacto ideal para a cidade.',
-//         manufacturingYear: new Date('2019-03-10'),
-//         premiumAmount: 500,
-//         insuranceStatus: 'insured',
-//     },
-//     {
-//         id: 2,
-//         model: 'Volkswagen Gol',
-//         licensePlate: 'DEF-5678',
-//         price: 52000,
-//         description: 'Carro popular, excelente custo-benefício.',
-//         manufacturingYear: new Date('2020-07-22'),
-//         premiumAmount: 0,
-//         insuranceStatus: 'not-insured',
-//     },
-//     {
-//         id: 3,
-//         model: 'Hyundai HB20',
-//         licensePlate: 'GHI-9012',
-//         price: 61000,
-//         description: 'Design moderno e bom desempenho.',
-//         manufacturingYear: new Date('2021-02-15'),
-//         premiumAmount: 700,
-//         insuranceStatus: 'insured',
-//     },
-//     {
-//         id: 4,
-//         model: 'Chevrolet Onix',
-//         licensePlate: 'JKL-3456',
-//         price: 65000,
-//         description: 'O mais vendido do Brasil, com muita tecnologia.',
-//         manufacturingYear: new Date('2022-04-01'),
-//         premiumAmount: 850,
-//         insuranceStatus: 'insured',
-//     },
-//     {
-//         id: 5,
-//         model: 'Toyota Corolla',
-//         licensePlate: 'MNO-7890',
-//         price: 120000,
-//         description: 'Sedan de luxo, sinônimo de confiabilidade.',
-//         manufacturingYear: new Date('2023-11-20'),
-//         premiumAmount: 0,
-//         insuranceStatus: 'not-insured',
-//     },
-// ];
+import { PencilSimple, Trash, Plus, SignOut, Car as CarIcon, CalendarCheck } from "phosphor-react";
 
 function DashboardClient() {
   const navigate = useNavigate();
@@ -78,7 +14,6 @@ function DashboardClient() {
   const [car, setCar] = useState<Car[]>([]);
   const { user, handleLogout } = useContext(AuthContext);
   const token = user.token;
-
 
   useEffect(() => {
     if (token === '') {
@@ -90,7 +25,6 @@ function DashboardClient() {
   useEffect(() => {
     buscarCarro();
   }, [car.length]);
-
 
   async function buscarCarro() {
     setIsLoading(true);
@@ -108,85 +42,127 @@ function DashboardClient() {
     } finally {
       setIsLoading(false);
     }
-
   }
 
   const carrosDoUsuario = car.filter(
-  (carro) => carro.user?.username === user.username
-);
+    (carro) => carro.user?.username === user.username
+  );
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3]">
       <div className="p-4 mx-auto max-w-7xl flex-grow">
         {isLoading && (
           <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm z-50">
-            <span className="text-xl font-bold text-gray-700">Carregando dados...</span>
+            <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-[#034153]">
+              <span className="text-xl font-bold text-[#034153]">Carregando dados...</span>
+            </div>
           </div>
         )}
 
-        <header className="flex items-center justify-between py-6">
+        {/* Header */}
+        <header className="flex items-center justify-between py-6 bg-white rounded-2xl shadow-xl mb-6 px-6 border-t-4 border-[#056174]">
           <div className="flex-none">
-            <img src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" alt="Logo da Empresa" className="w-20" />
+            <img 
+              src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" 
+              alt="Logo da Empresa" 
+              className="w-30 transition-transform duration-300 hover:scale-105 hover:cursor-pointer" 
+            />
           </div>
           <div className="flex-grow text-center">
-            <h1 className="text-3xl font-bold">Dashboard Cliente</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#034153]">Dashboard Cliente</h1>
+            <p className="text-[#678391] text-sm mt-1">Gerencie seus veículos e seguros</p>
           </div>
           <div className="flex-none flex items-center gap-4">
             <Link to='/cadastrarcarro'>
-              <button className="px-6 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600">
+              <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg font-bold hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 flex items-center gap-2 hover:cursor-pointer">
+                <Plus size={20} />
                 Novo Carro
               </button>
             </Link>
 
             <button
               onClick={handleLogout}
-              className="px-6 py-2 bg-red-500 text-white rounded-lg font-bold hover:bg-red-600"
+              className="px-6 py-3 border-2 border-[#034153] text-[#056174] rounded-lg font-bold hover:from-red-600 hover:to-red-500 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 hover:cursor-pointer "
             >
+              <SignOut size={20} />
               Sair
             </button>
           </div>
         </header>
 
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-center">
-            <div className="bg-blue-50 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold text-blue-700">Total de Carros</h3>
-              <p className="text-2xl font-bold text-blue-900">{carrosDoUsuario.length}</p>
+        {/* KPIs */}
+        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border-t-4 border-[#034153]">
+          <h2 className="text-2xl font-bold text-[#034153] text-center mb-6">Resumo dos Seus Veículos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 text-center">
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#034153]">
+              <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center mx-auto mb-3">
+                <CarIcon size={24} color="#034153" weight="fill" />
+              </div>
+              <h3 className="text-lg font-semibold text-[#034153] mb-2">Total de Carros</h3>
+              <p className="text-3xl font-bold text-[#056174]">{carrosDoUsuario.length}</p>
             </div>
-            <div className="bg-green-50 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold text-green-700">Valor Total dos Carros</h3>
-              <p className="text-2xl font-bold text-green-900">
+            
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#056174]">
+              <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center mx-auto mb-3">
+                <span className="text-[#034153] font-bold text-lg">R$</span>
+              </div>
+              <h3 className="text-lg font-semibold text-[#034153] mb-2">Valor Total dos Carros</h3>
+              <p className="text-2xl font-bold text-[#056174]">
                 R$ {carrosDoUsuario.reduce((total, carro) => total + Number(carro.price), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
-            <div className="bg-yellow-50 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold text-yellow-700">Prêmios a Pagar</h3>
-              <p className="text-2xl font-bold text-yellow-900">
+            
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#034153]">
+              <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center mx-auto mb-3">
+                <span className="text-[#034153] font-bold text-lg">%</span>
+              </div>
+              <h3 className="text-lg font-semibold text-[#034153] mb-2">Prêmios a Pagar</h3>
+              <p className="text-2xl font-bold text-[#056174]">
                 R$ {carrosDoUsuario.reduce((total, carro) => total + Number(carro.premiumAmount), 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
               </p>
             </div>
-            <div className="bg-purple-50 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold text-purple-700">Carros Segurados</h3>
-              <p className="text-2xl font-bold text-purple-900">
-                {carrosDoUsuario.filter(carro => carro.insuranceStatus !== null).length} de {carrosDoUsuario.length}
+            
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#056174]">
+              <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center mx-auto mb-3">
+                <CalendarCheck size={24} color="#034153" weight="fill" />
+              </div>
+              <h3 className="text-lg font-semibold text-[#034153] mb-2">Carros Segurados</h3>
+              <p className="text-2xl font-bold text-[#056174]">
+                {carrosDoUsuario.filter(carro => carro.insuranceStatus !== null).length} / {carrosDoUsuario.length}
               </p>
             </div>
-            <div className="bg-purple-50 p-4 rounded-lg">
-              <h3 className="text-lg font-semibold text-purple-700">Carros Antigos</h3>
-              <p className="text-2xl font-bold text-purple-900">
-                {carrosDoUsuario.filter(carro => carro.insuranceStatus == "Carro Antigo").length} de {carrosDoUsuario.length}
+            
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#034153]">
+              <div className="w-12 h-12 rounded-full bg-[#96A3AB] flex items-center justify-center mx-auto mb-3">
+                <CarIcon size={24} color="#034153" weight="fill" />
+              </div>
+              <h3 className="text-lg font-semibold text-[#034153] mb-2">Carros Antigos</h3>
+              <p className="text-2xl font-bold text-[#056174]">
+                {carrosDoUsuario.filter(carro => carro.insuranceStatus == "Carro Antigo").length} / {carrosDoUsuario.length}
               </p>
             </div>
           </div>
         </div>
 
+        {/* Lista de Carros */}
         <div className="mt-8">
           {carrosDoUsuario.length === 0 ? (
-            <p className="text-center text-gray-500">Nenhum carro encontrado.</p>
+            <div className="text-center py-12 bg-white rounded-2xl shadow-xl border-t-4 border-[#678391]">
+              <div className="w-16 h-16 rounded-full bg-[#e8f4f8] flex items-center justify-center mx-auto mb-4">
+                <CarIcon size={32} color="#678391" />
+              </div>
+              <p className="text-[#678391] text-lg mb-4">Nenhum carro encontrado.</p>
+              <Link to='/cadastrarcarro'>
+                <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105">
+                  Cadastrar Primeiro Carro
+                </button>
+              </Link>
+            </div>
           ) : (
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-[#056174]">
               {/* Cabeçalho da tabela */}
-              <div className="bg-gray-50 px-6 py-3 border-b border-gray-200">
-                <div className="grid grid-cols-18 gap-4 text-sm font-medium text-gray-700">
+              <div className="bg-gradient-to-r from-[#034153] to-[#056174] px-6 py-4 border-b">
+                <div className="grid grid-cols-18 gap-4 text-sm font-medium text-white">
                   <div className="col-span-3">Modelo</div>
                   <div className="col-span-2">Placa</div>
                   <div className="col-span-1">Ano</div>
@@ -198,65 +174,78 @@ function DashboardClient() {
                   <div className="col-span-2">Ações</div>
                 </div>
               </div>
-              <div className="divide-y divide-gray-200">
+              
+              <div className="divide-y divide-[#76AABF]/20">
                 {carrosDoUsuario.map((carro, index) => (
                   <div
                     key={carro.id}
-                    className={`px-6 py-4 hover:bg-gray-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-25'
-                      }`}
+                    className={`px-6 py-4 hover:bg-[#f7f9fb] transition-all duration-200 ${
+                      index % 2 === 0 ? 'bg-white' : 'bg-[#f7f9fb]'
+                    }`}
                   >
                     <div className="grid grid-cols-18 gap-4 items-center text-sm">
                       <div className="col-span-3">
-                        <p className="font-medium text-gray-900">{carro.model}</p>
-                        <p className="text-gray-500 text-xs mt-1">{carro.description}</p>
+                        <p className="font-medium text-[#034153]">{carro.model}</p>
+                        <p className="text-[#678391] text-xs mt-1">{carro.description}</p>
                       </div>
                       <div className="col-span-2">
-                        <span className="text-gray-900">{carro.licensePlate}</span>
+                        <span className="text-[#678391] font-mono">{carro.licensePlate}</span>
                       </div>
                       <div className="col-span-1">
-                        <span className="text-gray-900">{new Date(carro.manufacturingYear).getFullYear()}</span>
+                        <span className="text-[#678391]">{new Date(carro.manufacturingYear).getFullYear()}</span>
                       </div>
                       <div className="col-span-2">
-                        <span className="text-gray-900 font-medium">R$ {carro.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+                        <span className="text-[#056174] font-semibold">
+                          R$ {carro.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                        </span>
                       </div>
                       <div className="col-span-2">
-                        <span className="text-gray-900">{carro.insurance?.title}</span>
+                        <span className="text-[#034153] font-medium">{carro.insurance?.title || '-'}</span>
                       </div>
                       <div className="col-span-2">
-                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${carro.insuranceStatus !== null
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
-                          }`}>
+                        <span className={`inline-flex px-3 py-1 text-xs font-medium rounded-full ${
+                          carro.insuranceStatus !== null
+                            ? 'bg-green-100 text-green-800 border border-green-200'
+                            : 'bg-red-100 text-red-800 border border-red-200'
+                        }`}>
                           {carro.insurance !== null ? 'Segurado' : 'Não Segurado'}
                         </span>
                       </div>
-                       <div className="col-span-2">
-                        <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${carro.insuranceStatus == "Carro Atual"
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
-                          }`}>
+                      <div className="col-span-2">
+                        <span className={`inline-flex px-3 py-1 text-xs font-medium rounded-full ${
+                          carro.insuranceStatus == "Carro Atual"
+                            ? 'bg-blue-100 text-blue-800 border border-blue-200'
+                            : 'bg-orange-100 text-orange-800 border border-orange-200'
+                        }`}>
                           {carro.insuranceStatus == "Carro Antigo" ? 'Antigo' : 'Atual'}
                         </span>
                       </div>
                       <div className="col-span-2">
-                        <span className="text-gray-900">
+                        <span className="text-[#678391] font-medium">
                           {carro.premiumAmount > 0
                             ? `R$ ${carro.premiumAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
                             : '-'
                           }
                         </span>
                       </div>
-                      <div className="col-span-2 flex flex-row gap-2 ">
+                      <div className="col-span-2 flex flex-row gap-2">
                         <Link to={`/editarcarro/${carro.id}`}>
-                          <button className="p-2 ml-2 text-white transition hover:text-black rounded bg-[#1393b5]
-                      hover:bg-[#13b7dc] active:bg-[#13b7dc]/20" title="Editar"><PencilSimple size={25} /></button>
+                          <button 
+                            className="p-2 border-2  text-white bg-gradient-to-l from-[#034153] to-[#056174] rounded-lg transition-all duration-300 transform hover:scale-110 hover:cursor-pointer" 
+                            title="Editar"
+                          >
+                            <PencilSimple size={20} />
+                          </button>
                         </Link>
 
                         <Link to={`/deletarcarro/${carro.id}`}>
-                          <button className="p-2  text-white transition hover:text-black rounded bg-[#1393b5]
-                      hover:bg-[#13b7dc] active:bg-[#13b7dc]/20" title="Excluir"><Trash size={25} /></button>
+                          <button 
+                            className="p-2 text-[#034153] border-2 border-[#034153]  rounded-lg transition-all duration-300 transform hover:scale-110 hover:cursor-pointer" 
+                            title="Excluir"
+                          >
+                            <Trash size={20} />
+                          </button>
                         </Link>
-
                       </div>
                     </div>
                   </div>
@@ -267,14 +256,16 @@ function DashboardClient() {
         </div>
       </div>
 
-      <footer className=" bg-gray-800 text-white p-4 mt-auto">
+      {/* Footer */}
+      <footer className="bg-gradient-to-r from-[#034153] to-[#056174] text-white p-4 mt-auto">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 justify-center">
-            <div className="text-left -mt-20">
-              <h3 className="text-lg font-semibold mb-2">Entre em contato</h3>
-              <ul className="text-sm space-y-1">
-                <li>
-                  <span className="font-medium">Telefone:</span>{" "}
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6">
+            <div className="text-left">
+              <h3 className="text-lg font-semibold mb-4 text-[#e8f4f8]">Entre em contato</h3>
+              <ul className="text-sm space-y-3">
+                <li className="flex items-center gap-3 hover:text-[#76AABF] transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-[#76AABF]"></div>
+                  <span className="font-medium">Telefone:</span>
                   <a
                     href="tel:08007777777"
                     className="hover:underline"
@@ -283,8 +274,9 @@ function DashboardClient() {
                     0800 777 7777
                   </a>
                 </li>
-                <li>
-                  <span className="font-medium">WhatsApp:</span>{" "}
+                <li className="flex items-center gap-3 hover:text-[#76AABF] transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-[#76AABF]"></div>
+                  <span className="font-medium">WhatsApp:</span>
                   <a
                     href="https://wa.me/5511977777777"
                     target="_blank"
@@ -295,8 +287,9 @@ function DashboardClient() {
                     (11) 97777-7777
                   </a>
                 </li>
-                <li>
-                  <span className="font-medium">E-mail:</span>{" "}
+                <li className="flex items-center gap-3 hover:text-[#76AABF] transition-colors">
+                  <div className="w-2 h-2 rounded-full bg-[#76AABF]"></div>
+                  <span className="font-medium">E-mail:</span>
                   <a
                     href="mailto:contato@carprotect.com.br"
                     className="hover:underline"
@@ -307,17 +300,18 @@ function DashboardClient() {
                 </li>
               </ul>
             </div>
-            <div className="flex justify-end">
-              <img src="https://i.ibb.co/MLCDmSL/raw.png" alt="" 
-              className="w-60 -mt-20"/>
-              <div className="text-center md:text-right">
-
-                {/*} 
-                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors">
-                    Suporte
-                </button>{*/}
-              </div>
+            <div className="flex justify-end items-center">
+              <img 
+                src="https://i.ibb.co/MLCDmSL/raw.png" 
+                alt="Logo Footer" 
+                className="w-60 opacity-80 hover:opacity-100 transition-opacity duration-300"
+              />
             </div>
+          </div>
+          <div className="border-t border-[#76AABF]/30 mt-8 pt-6 text-center">
+            <p className="text-[#e8f4f8] text-sm">
+              © 2025 Nexo Seguros. Todos os direitos reservados.
+            </p>
           </div>
         </div>
       </footer>
