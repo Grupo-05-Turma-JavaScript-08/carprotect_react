@@ -81,7 +81,7 @@ function Footer() {
         <div className="mt-8 border-t border-gray-300 pt-6 text-center">
           <div className="flex justify-center gap-6 mb-4">
             <a
-              href="https://www.linkedin.com/in/seu_usuario"
+              href="https://www.linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -90,7 +90,7 @@ function Footer() {
               <LinkedinLogo size={28} weight="bold" />
             </a>
             <a
-              href="https://www.instagram.com/seu_usuario"
+              href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -99,7 +99,7 @@ function Footer() {
               <InstagramLogo size={28} weight="bold" />
             </a>
             <a
-              href="https://www.facebook.com/seu_usuario"
+              href="https://www.facebook.com/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
