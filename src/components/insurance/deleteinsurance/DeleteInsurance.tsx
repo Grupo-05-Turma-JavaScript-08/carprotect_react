@@ -4,7 +4,7 @@ import type Insurance from "../../../models/Insurance";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar, deletar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
-import { Warning, ArrowLeft, Trash, ShieldCheck, Percent } from "phosphor-react";
+import { Warning, ArrowLeft, Trash, ShieldCheck, Percent } from "@phosphor-icons/react";
 
 function DeleteInsurance() {
     const navigate = useNavigate();
@@ -67,11 +67,11 @@ function DeleteInsurance() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] flex items-center justify-center p-6">
-            <div className="w-full max-w-lg">
+        <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] flex items-center justify-center p-4 sm:p-6">
+            <div className="w-full max-w-lg mx-auto">
                 
                 {/* Card Principal */}
-                <div className="bg-white rounded-2xl shadow-xl border-t-4 border-red-500 p-8">
+                <div className="bg-white rounded-2xl shadow-xl border-t-4 border-red-500 p-6 sm:p-8">
                     
                     {/* Header com ícone de aviso */}
                     <div className="text-center mb-8">
@@ -80,7 +80,7 @@ function DeleteInsurance() {
                                 <Warning size={32} color="white" weight="fill" />
                             </div>
                         </div>
-                        <h1 className="text-3xl font-bold text-[#034153] mb-2">Confirmar Exclusão</h1>
+                        <h1 className="text-2xl sm:text-3xl font-bold text-[#034153] mb-2">Confirmar Exclusão</h1>
                         <p className="text-[#678391]">Esta ação não pode ser desfeita</p>
                     </div>
 
@@ -93,24 +93,24 @@ function DeleteInsurance() {
                                 </div>
                                 <div className="flex-grow">
                                     <h3 className="font-bold text-[#034153] text-lg mb-3">Dados do Plano de Seguro</h3>
-                                    <div className="space-y-3">
-                                        <div className="flex justify-between items-center">
+                                    <div className="space-y-3 text-sm">
+                                        <div className="flex flex-col sm:flex-row sm:justify-between">
                                             <span className="text-[#678391] font-medium">Nome do Plano:</span>
-                                            <span className="text-[#034153] font-bold">{insurance.title}</span>
+                                            <span className="text-[#034153] font-bold text-right sm:text-left">{insurance.title}</span>
                                         </div>
                                         {insurance.description && (
-                                            <div className="border-t border-[#76AABF]/20 pt-3">
+                                            <div className="border-t border-[#76AABF]/20 pt-3 mt-3">
                                                 <span className="text-[#678391] font-medium block mb-2">Descrição:</span>
-                                                <p className="text-[#056174] text-sm leading-relaxed bg-[#e8f4f8] p-3 rounded-lg">
+                                                <p className="text-[#056174] leading-relaxed bg-[#e8f4f8] p-3 rounded-lg">
                                                     {insurance.description}
                                                 </p>
                                             </div>
                                         )}
                                         {insurance.porcentInsurance && (
-                                            <div className="flex justify-between items-center border-t border-[#76AABF]/20 pt-3">
+                                            <div className="flex justify-between items-center border-t border-[#76AABF]/20 pt-3 mt-3">
                                                 <span className="text-[#678391] font-medium flex items-center gap-2">
                                                     <Percent size={16} className="text-[#76AABF]" />
-                                                    Porcentagem do Prêmio:
+                                                    Prêmio:
                                                 </span>
                                                 <span className="text-[#034153] font-bold text-lg">
                                                     {insurance.porcentInsurance}%
@@ -118,7 +118,7 @@ function DeleteInsurance() {
                                             </div>
                                         )}
                                         {insurance.car && insurance.car.length > 0 && (
-                                            <div className="border-t border-[#76AABF]/20 pt-3">
+                                            <div className="border-t border-[#76AABF]/20 pt-3 mt-3">
                                                 <span className="text-[#678391] font-medium">Carros Vinculados:</span>
                                                 <span className="text-[#034153] font-bold ml-2">
                                                     {insurance.car.length} veículo(s)
@@ -178,7 +178,7 @@ function DeleteInsurance() {
                                 <>
                                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                                     Excluindo...
-                                </>
+                                </> 
                             ) : (
                                 <>
                                     <Trash size={20} />
@@ -211,4 +211,4 @@ function DeleteInsurance() {
     );
 }
 
-export default DeleteInsurance
+export default DeleteInsurance;

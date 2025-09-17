@@ -35,7 +35,7 @@ function Home() {
         if (!hasInputChanged) {
             timerRef.current = setTimeout(() => {
                 setIsModalOpen(true);
-            }, 30000);
+            }, 9000);
         }
         return () => {
             if (timerRef.current) {
@@ -55,24 +55,24 @@ function Home() {
             <section className="bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] flex justify-center items-center py-10 px-6 flex-col min-h-screen">
                 <div className="flex flex-col lg:flex-row w-full max-w-7xl justify-center">
 
-                    <article className="w-full lg:w-1/2 flex flex-col justify-baseline">
-                        <div className="flex justify-baseline  ">
-                            <h3 className="text-[#056174] text-5xl w-full md:w-1/3  justify-center flex">
+                    <article className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start">
+                        <div className="flex justify-center lg:justify-start items-baseline">
+                            <h3 className="text-[#056174] text-4xl sm:text-5xl flex items-center">
                                 Seguro
                             </h3>
-                            <span className="text-[#056174] text-2xl -ml-5 mt-3 font-bold" >de</span>
+                            <span className="text-[#056174] text-2xl ml-2 font-bold">de</span>
                         </div>
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[#034153]">
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-[#034153]">
                             Automóveis
                         </h1>
-                        <div className="relative left-15">
+                        <div className="relative mt-6 w-full max-w-lg mx-auto lg:mx-0">
                             <img
                                 src="https://i.ibb.co/xqZxzmH1/output-onlinepngtools-1.png"
                                 alt="Carro com família sorrindo"
-                                className="mt-6 rounded-lg relative z-10 transition-transform duration-500 hover:scale-105"
+                                className="rounded-lg relative z-10 transition-transform duration-500 hover:scale-105 w-full"
                             />
                             <img src="https://i.ibb.co/DD7gYbCk/3645816-Photoroom.png" alt=""
-                                className="w-1/2 absolute -top-15 -left-15 opacity-80" />
+                                className="w-1/2 absolute -top-10 -left-10 sm:-top-15 sm:-left-15 opacity-80" />
                         </div>
                     </article>
 
@@ -170,45 +170,45 @@ function Home() {
                 </div>
 
                 {/* Seção de Serviços */}
-                <article className="mt-10 bg-white w-full lg:w-2/3 flex justify-center flex-nowrap rounded-t-2xl items-center shadow-xl border-t-4 border-[#034153]">
-                    <div className="flex flex-col items-center gap-3 p-5 md:p-10">
-                        <div className="bg-[#76AABF] rounded-full p-5 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-                            <ClockIcon size={60} color="#034153" weight="fill" />
+                <article className="mt-10 bg-white w-full max-w-7xl flex flex-wrap justify-center rounded-2xl items-center shadow-xl border-t-4 border-[#034153]">
+                    <div className="flex flex-col items-center gap-3 p-4 md:p-6 lg:p-8">
+                        <div className="bg-[#76AABF] rounded-full p-4 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
+                            <ClockIcon size={48} color="#034153" weight="fill" />
                         </div>
-                        <span className="text-xl font-bold text-center text-[#034153]">Suporte 24h</span>
+                        <span className="text-lg font-bold text-center text-[#034153]">Suporte 24h</span>
                     </div>
 
-                    <div className="flex flex-col items-center gap-3 p-5 md:p-10">
-                        <div className="bg-[#76AABF] rounded-full p-5 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-                            <KeyIcon size={60} color="#034153" weight="fill" />
+                    <div className="flex flex-col items-center gap-3 p-4 md:p-6 lg:p-8">
+                        <div className="bg-[#76AABF] rounded-full p-4 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
+                            <KeyIcon size={48} color="#034153" weight="fill" />
                         </div>
-                        <span className="text-xl font-bold text-center text-[#034153]">Serviço de Chaveiro</span>
+                        <span className="text-lg font-bold text-center text-[#034153]">Serviço de Chaveiro</span>
                     </div>
 
-                    <div className="flex flex-col items-center gap-3 p-5 md:p-10">
-                        <div className="bg-[#76AABF] rounded-full p-5 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-                            <TrophyIcon size={60} color="#034153" weight="fill" />
+                    <div className="flex flex-col items-center gap-3 p-4 md:p-6 lg:p-8">
+                        <div className="bg-[#76AABF] rounded-full p-4 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
+                            <TrophyIcon size={48} color="#034153" weight="fill" />
                         </div>
-                        <span className="text-xl font-bold text-center text-[#034153]">Abrangência Nacional</span>
+                        <span className="text-lg font-bold text-center text-[#034153]">Abrangência Nacional</span>
                     </div>
 
-                    <div className="flex flex-col items-center gap-3 p-5 md:p-10">
-                        <div className="bg-[#76AABF] rounded-full p-5 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-                            <TireIcon size={60} color="#034153" weight="fill" />
+                    <div className="flex flex-col items-center gap-3 p-4 md:p-6 lg:p-8">
+                        <div className="bg-[#76AABF] rounded-full p-4 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
+                            <TireIcon size={48} color="#034153" weight="fill" />
                         </div>
-                        <span className="text-xl font-bold text-center text-[#034153]">Troca de Pneus</span>
+                        <span className="text-lg font-bold text-center text-[#034153]">Troca de Pneus</span>
                     </div>
 
-                    <div className="flex flex-col items-center gap-3 p-5 md:p-10">
-                        <div className="bg-[#76AABF] rounded-full p-5 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-                            <CarBatteryIcon size={60} color="#034153" weight="fill" />
+                    <div className="flex flex-col items-center gap-3 p-4 md:p-6 lg:p-8">
+                        <div className="bg-[#76AABF] rounded-full p-4 flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
+                            <CarBatteryIcon size={48} color="#034153" weight="fill" />
                         </div>
-                        <span className="text-xl font-bold text-center text-[#034153]">Carga de Bateria</span>
+                        <span className="text-lg font-bold text-center text-[#034153]">Carga de Bateria</span>
                     </div>
                 </article>
 
                 {/* Cards de Planos */}
-                <div className="p-8 bg-gradient-to-br from-[#e8f4f8] to-white w-full lg:w-2/3 justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-b-2xl shadow-xl gap-6">
+                <div className="p-8 bg-gradient-to-br from-[#e8f4f8] to-white w-full max-w-7xl justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-b-2xl shadow-xl gap-6">
                     <div className="flex items-center justify-center">
                         <div className="w-full max-w-md bg-white shadow-xl rounded-2xl overflow-hidden border-t-4 border-[#034153] transform transition-all duration-300 hover:scale-105">
                             <div className="p-6 space-y-4 flex flex-col justify-center items-center">

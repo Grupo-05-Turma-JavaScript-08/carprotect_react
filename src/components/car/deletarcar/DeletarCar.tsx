@@ -4,7 +4,7 @@ import type Car from "../../../models/Car";
 import { buscar, deletar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Trash, ArrowLeft, Warning, Car as CarIcon } from "phosphor-react";
+import { Trash, ArrowLeft, Warning, Car as CarIcon } from "@phosphor-icons/react";
 
 function DeletarCar() {
   const navigate = useNavigate();
@@ -68,11 +68,11 @@ function DeletarCar() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] flex items-center justify-center p-6">
-      <div className="w-full max-w-lg">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] flex items-center justify-center p-4 sm:p-6">
+      <div className="w-full max-w-lg mx-auto">
         
         {/* Card Principal */}
-        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-red-500 p-8">
+        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-red-500 p-6 sm:p-8">
           
           {/* Header com ícone de aviso */}
           <div className="text-center mb-8">
@@ -81,7 +81,7 @@ function DeletarCar() {
                 <Warning size={32} color="white" weight="fill" />
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-[#034153] mb-2">Confirmar Exclusão</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#034153] mb-2">Confirmar Exclusão</h1>
             <p className="text-[#678391]">Esta ação não pode ser desfeita</p>
           </div>
 
@@ -95,28 +95,28 @@ function DeletarCar() {
                 <div className="flex-grow">
                   <h3 className="font-bold text-[#034153] text-lg mb-2">Dados do Veículo</h3>
                   <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
+                    <div className="flex flex-col sm:flex-row sm:justify-between">
                       <span className="text-[#678391] font-medium">Modelo:</span>
-                      <span className="text-[#034153] font-bold">{car.model}</span>
+                      <span className="text-[#034153] font-bold text-right sm:text-left">{car.model}</span>
                     </div>
                     {car.licensePlate && (
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span className="text-[#678391] font-medium">Placa:</span>
-                        <span className="text-[#056174] font-mono font-bold">{car.licensePlate}</span>
+                        <span className="text-[#056174] font-mono font-bold text-right sm:text-left">{car.licensePlate}</span>
                       </div>
                     )}
                     {car.price && (
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span className="text-[#678391] font-medium">Valor:</span>
-                        <span className="text-[#034153] font-bold">
+                        <span className="text-[#034153] font-bold text-right sm:text-left">
                           R$ {car.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
                         </span>
                       </div>
                     )}
                     {car.manufacturingYear && (
-                      <div className="flex justify-between">
+                      <div className="flex flex-col sm:flex-row sm:justify-between">
                         <span className="text-[#678391] font-medium">Ano:</span>
-                        <span className="text-[#034153] font-bold">
+                        <span className="text-[#034153] font-bold text-right sm:text-left">
                           {new Date(car.manufacturingYear).getFullYear()}
                         </span>
                       </div>

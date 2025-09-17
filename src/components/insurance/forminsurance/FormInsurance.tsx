@@ -106,9 +106,9 @@ function FormInsurance() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] p-4 sm:p-6">
       <div className="container max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-[#034153] p-8">
+        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-[#034153] p-6 sm:p-8">
           
           {/* Header */}
           <div className="text-center mb-8 pb-6 border-b border-[#76AABF]/30">
@@ -275,4 +275,4 @@ function FormInsurance() {
   );
 }
 
-export default FormInsurance
+export default FormInsurance;

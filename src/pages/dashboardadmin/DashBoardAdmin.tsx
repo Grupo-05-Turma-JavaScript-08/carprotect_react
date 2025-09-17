@@ -4,7 +4,7 @@ import { ToastAlerta } from "../../utils/ToastAlerta";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import type Insurance from "../../models/Insurance";
-import { PencilSimple, Trash, CaretDown, CaretUp, MagnifyingGlass, X, Plus, SignOut } from "phosphor-react";
+import { PencilSimple, Trash, CaretDown, CaretUp, MagnifyingGlass, X, Plus, SignOut } from "@phosphor-icons/react";
 
 function DashboardAdmin() {
   const navigate = useNavigate();
@@ -113,7 +113,7 @@ function DashboardAdmin() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3]">
-      <div className="p-4 mx-auto max-w-7xl flex-grow">
+      <div className="p-4 mx-auto w-full max-w-7xl flex-grow">
         {isLoading && (
           <div className="fixed inset-0 flex items-center justify-center backdrop-blur-sm z-50">
             <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-[#034153]">
@@ -125,21 +125,21 @@ function DashboardAdmin() {
         )}
 
         {/* Header */}
-        <header className="flex items-center justify-between py-6 bg-white rounded-2xl shadow-xl mb-6 px-6 border-t-4 border-[#034153]">
+        <header className="flex flex-col md:flex-row items-center justify-between py-6 bg-white rounded-2xl shadow-xl mb-6 px-6 border-t-4 border-[#034153] gap-4">
           <div className="flex-none">
             <img
               src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png"
               alt="Logo da Empresa"
-              className="w-30 transition-transform duration-300 hover:scale-105 "
+              className="w-32 transition-transform duration-300 hover:scale-105"
             />
           </div>
           <div className="flex-grow text-center">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#034153]">Dashboard Administrador</h1>
+            <h1 className="text-2xl md:text-4xl font-bold text-[#034153]">Dashboard Administrador</h1>
             <p className="text-[#678391] text-sm mt-1">Gerencie seguros e visualize estatísticas</p>
           </div>
-          <div className="flex-none flex items-center gap-4">
+          <div className="flex-none flex flex-col sm:flex-row items-center gap-4">
             <Link to="/cadastrarseguro">
-              <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg font-bold hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 flex items-center gap-2 hover:cursor-pointer">
+              <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg font-bold hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 hover:cursor-pointer">
                 <Plus size={20} />
                 Novo Seguro
               </button>
@@ -147,7 +147,7 @@ function DashboardAdmin() {
 
             <button
               onClick={handleLogout}
-              className="px-6 py-3 border-2 border-[#034153] text-[#056174] rounded-lg font-bold hover:from-red-600 hover:to-red-500 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 hover:cursor-pointer "
+              className="w-full sm:w-auto px-6 py-3 border-2 border-[#034153] text-[#056174] rounded-lg font-bold  transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 hover:cursor-pointer"
             >
               <SignOut size={20} />
               Sair
@@ -189,14 +189,14 @@ function DashboardAdmin() {
           <div className="flex justify-center gap-4 mb-6">
             <button
               onClick={expandAllCards}
-              className="px-6 py-3 bg-[#76AABF] text-white rounded-lg hover:bg-[#056174] text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-[#76AABF] text-white rounded-lg hover:bg-[#056174] text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
               <CaretDown size={16} />
               Expandir Todos
             </button>
             <button
               onClick={collapseAllCards}
-              className="px-6 py-3 bg-[#96A3AB] text-white rounded-lg hover:bg-[#678391] text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-[#96A3AB] text-white rounded-lg hover:bg-[#678391] text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
             >
               <CaretUp size={16} />
               Colapsar Todos
@@ -205,14 +205,14 @@ function DashboardAdmin() {
         )}
 
         {/* KPIs */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border-t-4 border-[#056174]">
-          <h2 className="text-2xl font-bold text-[#034153] text-center mb-6">Estatísticas do Sistema</h2>
+        <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 mb-8 border-t-4 border-[#056174]">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#034153] text-center mb-6">Estatísticas do Sistema</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#034153]">
-              <h3 className="text-lg font-semibold text-[#034153] mb-2">
+              <h3 className="text-md sm:text-lg font-semibold text-[#034153] mb-2">
                 Total de Seguros
               </h3>
-              <p className="text-3xl font-bold text-[#056174]">
+              <p className="text-2xl sm:text-3xl font-bold text-[#056174]">
                 {searchTerm ? `${filteredInsurances.length} / ${insurances.length}` : insurances.length}
               </p>
               {searchTerm && (
@@ -220,10 +220,10 @@ function DashboardAdmin() {
               )}
             </div>
             <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#056174]">
-              <h3 className="text-lg font-semibold text-[#034153] mb-2">
+              <h3 className="text-md sm:text-lg font-semibold text-[#034153] mb-2">
                 Valor Total dos Carros
               </h3>
-              <p className="text-3xl font-bold text-[#056174]">
+              <p className="text-2xl sm:text-3xl font-bold text-[#056174]">
                 R${" "}
                 {(searchTerm ? valorTotalCarrosFiltrados : valorTotalCarros).toLocaleString("pt-BR", {
                   minimumFractionDigits: 2,
@@ -236,10 +236,10 @@ function DashboardAdmin() {
               )}
             </div>
             <div className="bg-gradient-to-br from-[#e8f4f8] to-[#76AABF]/20 p-6 rounded-xl border-l-4 border-[#034153]">
-              <h3 className="text-lg font-semibold text-[#034153] mb-2">
+              <h3 className="text-md sm:text-lg font-semibold text-[#034153] mb-2">
                 Total de Carros Segurados
               </h3>
-              <p className="text-3xl font-bold text-[#056174]">
+              <p className="text-2xl sm:text-3xl font-bold text-[#056174]">
                 {searchTerm ? `${totalCarrosFiltrados} / ${totalCarros}` : totalCarros}
               </p>
               {searchTerm && (
@@ -279,9 +279,9 @@ function DashboardAdmin() {
                   className="bg-white rounded-2xl shadow-xl overflow-hidden mb-6 border-t-4 border-[#034153] transition-all duration-300 hover:shadow-2xl"
                 >
                   {/* Cabeçalho do seguro */}
-                  <div className="bg-gradient-to-r from-[#e8f4f8] to-white px-6 py-6 flex justify-between items-center">
+                  <div className="bg-gradient-to-r from-[#e8f4f8] to-white px-4 sm:px-6 py-4 sm:py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                     <div className="flex-grow">
-                      <h2 className="text-xl md:text-2xl font-bold text-[#034153] mb-2">
+                      <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#034153] mb-2">
                         {insurance.title}
                       </h2>
                       <p className="text-[#678391] text-sm md:text-base mb-2">
@@ -295,7 +295,7 @@ function DashboardAdmin() {
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 self-end sm:self-center">
                       {/* Botão de expandir/colapsar */}
                       <button
                         onClick={() => toggleCardExpansion(insurance.id)}
@@ -331,8 +331,8 @@ function DashboardAdmin() {
                     <>
                       {insurance.car && insurance.car.length > 0 ? (
                         <div className="divide-y divide-[#76AABF]/20">
-                          {/* Cabeçalho da tabela */}
-                          <div className="px-6 py-4 bg-gradient-to-r from-[#034153] to-[#056174] grid grid-cols-5 gap-4 text-sm font-semibold text-white">
+                          {/* Cabeçalho da tabela para telas grandes */}
+                          <div className="hidden md:grid px-6 py-4 bg-gradient-to-r from-[#034153] to-[#056174] grid-cols-5 gap-4 text-sm font-semibold text-white">
                             <span>Modelo</span>
                             <span>Placa</span>
                             <span>Ano</span>
@@ -340,36 +340,55 @@ function DashboardAdmin() {
                             <span className="text-right">Prêmio</span>
                           </div>
                           
+                          {/* Lista de carros para telas pequenas e grandes */}
                           {insurance.car.map((carro, index) => {
-                            // Destacar carros que correspondem à busca
                             const matchesSearch = searchTerm && 
                               carro.licensePlate.toLowerCase().includes(searchTerm.toLowerCase());
                             
                             return (
                               <div
                                 key={carro.id}
-                                className={`px-6 py-4 grid grid-cols-5 gap-4 text-sm items-center transition-colors duration-200 ${
-                                  matchesSearch 
-                                    ? "bg-gradient-to-r from-yellow-50 to-yellow-100 border-l-4 border-yellow-400" 
-                                    : index % 2 === 0 ? "bg-white hover:bg-[#f7f9fb]" : "bg-[#f7f9fb] hover:bg-[#e8eef3]"
-                                }`}
+                                className={`px-6 py-4 transition-colors duration-200 ${matchesSearch ? "bg-yellow-100" : index % 2 === 0 ? "bg-white" : "bg-gray-50"}`}
                               >
-                                <span className="font-medium text-[#034153]">{carro.model}</span>
-                                <span className={`font-mono ${matchesSearch ? 'font-bold text-yellow-800' : 'text-[#678391]'}`}>
-                                  {carro.licensePlate}
-                                </span>
-                                <span className="text-[#678391]">
-                                  {new Date(carro.manufacturingYear).getFullYear()}
-                                </span>
-                                <span className="text-[#056174] font-semibold">
-                                  R${" "}
-                                  {carro.price.toLocaleString("pt-BR", {
-                                    minimumFractionDigits: 2,
-                                  })}
-                                </span>
-                                <span className="text-right font-bold text-[#76AABF]">
-                                  {insurance.porcentInsurance}%
-                                </span>
+                                {/* Layout para telas grandes (tabela) */}
+                                <div className="hidden md:grid grid-cols-5 gap-4 items-center text-sm">
+                                  <span className="font-medium text-[#034153]">{carro.model}</span>
+                                  <span className={`font-mono ${matchesSearch ? 'font-bold text-yellow-800' : 'text-[#678391]'}`}>
+                                    {carro.licensePlate}
+                                  </span>
+                                  <span className="text-[#678391]">
+                                    {new Date(carro.manufacturingYear).getFullYear()}
+                                  </span>
+                                  <span className="text-[#056174] font-semibold">
+                                    R${" "}
+                                    {carro.price.toLocaleString("pt-BR", {
+                                      minimumFractionDigits: 2,
+                                    })}
+                                  </span>
+                                  <span className="text-right font-bold text-[#76AABF]">
+                                    {insurance.porcentInsurance}%
+                                  </span>
+                                </div>
+
+                                {/* Layout para telas pequenas (cartão) */}
+                                <div className="md:hidden flex flex-col gap-2 text-sm">
+                                  <div className="flex justify-between">
+                                    <span className="font-bold text-[#034153]">{carro.model}</span>
+                                    <span className={`font-mono font-bold ${matchesSearch ? 'text-yellow-800' : 'text-[#056174]'}`}>{carro.licensePlate}</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span className="text-[#678391]">Ano: {new Date(carro.manufacturingYear).getFullYear()}</span>
+                                    <span className="text-[#678391]">Prêmio: <span className="font-bold">{insurance.porcentInsurance}%</span></span>
+                                  </div>
+                                  <div className="text-right mt-1">
+                                    <span className="text-[#056174] font-semibold">
+                                      R${" "}
+                                      {carro.price.toLocaleString("pt-BR", {
+                                        minimumFractionDigits: 2,
+                                      })}
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
                             );
                           })}
@@ -392,10 +411,10 @@ function DashboardAdmin() {
       <footer className="bg-gradient-to-r from-[#034153] to-[#056174] text-white p-4 mt-auto">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6">
-            <div className="text-left">
+            <div className="text-center md:text-left">
               <h3 className="text-lg font-semibold mb-4 text-[#e8f4f8]">Entre em contato</h3>
               <ul className="text-sm space-y-3">
-                <li className="flex items-center gap-3 hover:text-[#76AABF] transition-colors">
+                <li className="flex items-center justify-center md:justify-start gap-3 hover:text-[#76AABF] transition-colors">
                   <div className="w-2 h-2 rounded-full bg-[#76AABF]"></div>
                   <span className="font-medium">Telefone:</span>
                   <a
@@ -406,7 +425,7 @@ function DashboardAdmin() {
                     0800 777 7777
                   </a>
                 </li>
-                <li className="flex items-center gap-3 hover:text-[#76AABF] transition-colors">
+                <li className="flex items-center justify-center md:justify-start gap-3 hover:text-[#76AABF] transition-colors">
                   <div className="w-2 h-2 rounded-full bg-[#76AABF]"></div>
                   <span className="font-medium">WhatsApp:</span>
                   <a
@@ -419,7 +438,7 @@ function DashboardAdmin() {
                     (11) 97777-7777
                   </a>
                 </li>
-                <li className="flex items-center gap-3 hover:text-[#76AABF] transition-colors">
+                <li className="flex items-center justify-center md:justify-start gap-3 hover:text-[#76AABF] transition-colors">
                   <div className="w-2 h-2 rounded-full bg-[#76AABF]"></div>
                   <span className="font-medium">E-mail:</span>
                   <a
@@ -432,7 +451,7 @@ function DashboardAdmin() {
                 </li>
               </ul>
             </div>
-            <div className="flex justify-end items-center">
+            <div className="hidden md:flex justify-end items-center">
               <img 
                 src="https://i.ibb.co/MLCDmSL/raw.png" 
                 alt="Logo Footer" 

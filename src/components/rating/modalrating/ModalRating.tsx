@@ -7,22 +7,26 @@ interface ModalProps {
   onClose: () => void;
 }
 
-
 const ModalRating: React.FC<ModalProps> = ({ isOpen, onClose }) => {
   const [open, setOpen] = useState(false);
-  const closeModal = () => setOpen(false);
+  const closeModal = () => {
+    setOpen(false);
+    onClose(); // Notifica o componente pai que o modal foi fechado
+  };
 
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [feedback, setFeedback] = useState("");
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpen(true);
-    }, 30000);
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setOpen(true);
+      }, 9000); // Abre após 30 segundos se a prop isOpen for verdadeira
 
-    return () => clearTimeout(timer);
-  }, []);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
 
   return (
     <Popup
@@ -32,26 +36,26 @@ const ModalRating: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       contentStyle={{
         borderRadius: "1rem",
         width: "90%",
-        maxWidth: "24rem",
+        maxWidth: "28rem", // Aumentado para melhor espaçamento
         padding: "0",
-        animation: "fadeIn 0.5s",
+        animation: "fadeIn 0.3s ease-out",
         position: "relative",
       }}
       modal
     >
-      <div className="rounded-2xl bg-white shadow-xl">
+      <div className="rounded-2xl bg-white shadow-xl font-sans">
         <button
-          className="absolute top-4 right-4 z-10 rounded-full p-1 text-white focus:outline-none"
+          className="absolute top-3 right-3 z-10 rounded-full p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 transition-all focus:outline-none"
           onClick={closeModal}
         >
           <X size={20} weight="bold" />
         </button>
-        <div className="rounded-t-2xl bg-sky-900 p-4 text-center text-gray-200">
-          <p className="text-sm">Nos ajude a melhorar!</p>
-          <h2 className="text-xl font-bold">Avalie sua experiência</h2>
+        <div className="rounded-t-2xl bg-gradient-to-r from-[#034153] to-[#056174] p-6 text-center text-white">
+          <p className="text-sm opacity-80">Nos ajude a melhorar!</p>
+          <h2 className="text-xl sm:text-2xl font-bold">Avalie sua experiência</h2>
         </div>
-        <div className="flex flex-col items-center p-6">
-          <div className="flex space-x-2">
+        <div className="flex flex-col items-center p-6 sm:p-8">
+          <div className="flex space-x-2 sm:space-x-3">
             {[...Array(5)].map((_, index) => {
               const starValue = index + 1;
               return (
@@ -65,8 +69,8 @@ const ModalRating: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                       : "none"
                   }
                   stroke="currentColor"
-                  className={`h-10 w-10 cursor-pointer transition-colors duration-200 ${starValue <= (hoverRating || rating)
-                      ? "text-yellow-500"
+                  className={`h-10 w-10 sm:h-12 sm:w-12 cursor-pointer transition-all duration-200 transform hover:scale-110 ${starValue <= (hoverRating || rating)
+                      ? "text-yellow-400"
                       : "text-gray-300"
                     }`}
                   onClick={() => setRating(starValue)}
@@ -82,18 +86,18 @@ const ModalRating: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               );
             })}
           </div>
-          <h3 className="mt-4 text-lg font-semibold">Envie seu feedback</h3>
+          <h3 className="mt-6 text-lg font-semibold text-[#034153]">Envie seu feedback</h3>
           <textarea
-            className="my-4 h-24 w-full rounded-lg border border-gray-300 bg-gray-100 p-2 focus:border-blue-500 focus:outline-none"
+            className="my-4 h-24 w-full rounded-lg border-2 border-gray-200 bg-gray-50 p-3 focus:border-[#056174] focus:outline-none focus:ring-1 focus:ring-[#056174] transition-colors"
             placeholder="Digite seu feedback aqui..."
             value={feedback}
             onChange={(e) => setFeedback(e.target.value)}
           ></textarea>
           <button
-            className="button cursor-pointer rounded-lg bg-sky-900 px-6 py-2 font-bold text-white transition hover:bg-sky-800"
+            className="w-full cursor-pointer rounded-lg bg-gradient-to-r from-[#034153] to-[#056174] px-6 py-3 font-bold text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
             onClick={closeModal}
           >
-            Enviar
+            Enviar Avaliação
           </button>
         </div>
       </div>

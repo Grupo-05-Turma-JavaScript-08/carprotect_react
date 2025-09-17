@@ -1,4 +1,4 @@
-import { EnvelopeSimpleIcon, PhoneIcon, WhatsappLogoIcon } from "@phosphor-icons/react"
+import { EnvelopeSimple, Phone, WhatsappLogo } from "@phosphor-icons/react";
 
 function Contato() {
     return (
@@ -8,11 +8,11 @@ function Contato() {
                 {/* Seção Principal */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 px-6 md:px-20 py-16">
                     <div className="flex justify-center md:justify-start">
-                        <div className="flex flex-col gap-8 justify-center items-start">
+                        <div className="flex flex-col gap-8 justify-center items-center lg:items-start text-center lg:text-left">
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-[#034153]">
                                 Fale Conosco
                             </h1>
-                            <p className="text-[#678391] text-lg md:text-xl lg:text-2xl font-medium leading-relaxed">
+                            <p className="text-[#678391] text-lg md:text-xl font-medium leading-relaxed">
                                 Tem alguma dúvida, precisa de uma cotação ou quer saber mais sobre nossos serviços?
                                 <br /><br />
                                 Estamos à disposição para te ajudar! Entre em contato conosco através do formulário abaixo ou pelos nossos canais de atendimento. Nossa equipe está pronta para oferecer o melhor suporte e as soluções ideais para suas necessidades de seguro.
@@ -24,18 +24,18 @@ function Contato() {
                     <div className="flex justify-center lg:justify-end">
                         <div className="relative">
                             {/* Círculo decorativo de fundo */}
-                            <div className="absolute inset-0 w-80 h-80 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-[#96A3AB] to-[#76AABF] opacity-30 -z-10"></div>
+                            <div className="absolute inset-0 w-full h-full rounded-full bg-gradient-to-br from-[#96A3AB] to-[#76AABF] opacity-30 -z-10 transform scale-75 md:scale-100"></div>
                             <img
                                 src="https://i.ibb.co/wN3hsHhm/imagecarro.png"
                                 alt="Imagem família sorrindo no carro"
-                                className="rounded-2xl w-full  h-auto object-cover transform transition-transform duration-500 hover:scale-105 shadow-xl"
+                                className="rounded-2xl w-full max-w-full  h-auto object-cover transform transition-transform duration-500 hover:scale-105 shadow-xl"
                             />
                         </div>
                     </div>
                 </div>
 
                 {/* Seção de Contato e Formulário */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white items-start px-6 md:px-20 py-16 mx-6 md:mx-20 rounded-2xl shadow-xl border-t-4 border-[#034153]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white items-start px-6 md:px-20 py-16 mx-4 md:mx-20 rounded-2xl shadow-xl border-t-4 border-[#034153]">
                     
                     {/* Informações de Contato */}
                     <div className="flex flex-col items-start gap-8">
@@ -48,7 +48,7 @@ function Contato() {
                                 aria-label="Ligar para 0800 777 7777"
                             >
                                 <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center group-hover:bg-[#034153] transition-colors">
-                                    <PhoneIcon size={24} color="white" weight="fill" />
+                                    <Phone size={24} color="white" weight="fill" />
                                 </div>
                                 <div>
                                     <p className="text-[#034153] font-semibold text-lg">Telefone</p>
@@ -64,7 +64,7 @@ function Contato() {
                                 aria-label="Abrir WhatsApp"
                             >
                                 <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center group-hover:bg-[#25D366] transition-colors">
-                                    <WhatsappLogoIcon size={24} color="white" weight="fill" />
+                                    <WhatsappLogo size={24} color="white" weight="fill" />
                                 </div>
                                 <div>
                                     <p className="text-[#034153] font-semibold text-lg">WhatsApp</p>
@@ -78,7 +78,7 @@ function Contato() {
                                 aria-label="Enviar email"
                             >
                                 <div className="w-12 h-12 rounded-full bg-[#76AABF] flex items-center justify-center group-hover:bg-[#056174] transition-colors">
-                                    <EnvelopeSimpleIcon size={24} color="white" weight="fill" />
+                                    <EnvelopeSimple size={24} color="white" weight="fill" />
                                 </div>
                                 <div>
                                     <p className="text-[#034153] font-semibold text-lg">E-mail</p>
@@ -196,4 +196,4 @@ function Contato() {
     )
 }
 
-export default Contato
+export default Contato;

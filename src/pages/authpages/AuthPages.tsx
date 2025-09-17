@@ -100,11 +100,11 @@ export default function AuthPage() {
     return (
         <>
 
-            <div className="grid grid-cols-2 h-screen bg-gradient-to-l from-[#056174] to-[#153441]">
+            <div className="grid grid-cols-1 md:grid-cols-2 h-screen bg-gradient-to-l from-[#056174] to-[#153441]">
 
                 {/* Card centralizado na primeira coluna */}
-                <div className="flex items-center justify-center">
-                    <div className="w-[400px] bg-gray-300 shadow-lg rounded-2xl p-8">
+                <div className="flex items-center justify-center p-4">
+                    <div className="w-full max-w-md bg-gray-300 shadow-lg rounded-2xl p-8">
                         <h2 className="text-2xl font-bold text-center mb-10">
                             {isLogin ? "Login" : "Cadastro"}
                         </h2>
@@ -133,7 +133,7 @@ export default function AuthPage() {
                                     />
                                     <label htmlFor="password">Senha</label>
                                     <input
-                                        type="text"
+                                        type="password"
                                         placeholder="Digite sua senha"
                                         className="w-full px-4 py-2 border rounded-lg focus:outline-none bg-gray-200"
                                         name="password"
@@ -236,9 +236,9 @@ export default function AuthPage() {
                 </div>
 
                 {/* Imagem na segunda coluna */}
-                <div className="flex items-center justify-center">
+                <div className="hidden md:flex items-center justify-center">
                      <img src="https://i.ibb.co/MLCDmSL/raw.png" alt=""
-                                className="flex items-center justify-center mr-30" />
+                                className="max-w-full h-auto" />
                 </div>
             </div>
         </>

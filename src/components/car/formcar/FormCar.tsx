@@ -5,8 +5,7 @@ import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type Insurance from "../../../models/Insurance";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Calendar, CurrencyDollarSimple, Hash, Shield, Tag, ArrowLeft, FloppyDisk } from "phosphor-react";
-import { CarIcon } from "@phosphor-icons/react";
+import { Calendar, CurrencyDollarSimple, Hash, Shield, Tag, ArrowLeft, FloppyDisk, Car as CarIcon } from "@phosphor-icons/react";
 
 function FormCar() {
   const navigate = useNavigate();
@@ -14,7 +13,6 @@ function FormCar() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [car, setCar] = useState<Car>({} as Car);
   const [insurances, setInsurances] = useState<Insurance[]>([]);
-  const [insurance, setInsurance] = useState<Insurance | null>(null);
 
   const { id } = useParams<{ id: string }>();
   const { user, handleLogout } = useContext(AuthContext);
@@ -58,16 +56,6 @@ function FormCar() {
     }
   }, [id]);
 
-  // Atualiza insurance no car sempre que mudar
-  useEffect(() => {
-    if (insurance) {
-      setCar((prev) => ({
-        ...prev,
-        insurance: { id: insurance.id }
-      }));
-    }
-  }, [insurance]);
-
   function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
 
@@ -86,13 +74,10 @@ function FormCar() {
     e.preventDefault();
     setIsLoading(true);
 
-    console.log("Payload enviado:", car); // DEBUG: confira antes de enviar
-
     if (id !== undefined) {
       try {
         await atualizar(`carro`, car, setCar, { headers: { Authorization: token } });
         ToastAlerta("Carro atualizado com sucesso!", "success");
-        retornar();
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
@@ -104,7 +89,6 @@ function FormCar() {
       try {
         await cadastrar(`carro`, car, setCar, { headers: { Authorization: token } });
         ToastAlerta("Carro cadastrado com sucesso!", "success");
-         retornar();
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
@@ -118,12 +102,10 @@ function FormCar() {
     retornar();
   }
 
-  const carregandoSeguro = !car.insurance?.id;
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] p-6">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] p-4 sm:p-6">
       <div className="container max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-[#034153] p-8">
+        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-[#034153] p-6 sm:p-8">
           
           {/* Header */}
           <div className="text-center mb-8 pb-6 border-b border-[#76AABF]/30">
