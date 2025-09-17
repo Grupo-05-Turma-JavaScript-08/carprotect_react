@@ -130,7 +130,7 @@ function DashboardAdmin() {
             <img
               src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png"
               alt="Logo da Empresa"
-              className="w-30 transition-transform duration-300 hover:scale-105 hover:cursor-pointer"
+              className="w-30 transition-transform duration-300 hover:scale-105 "
             />
           </div>
           <div className="flex-grow text-center">

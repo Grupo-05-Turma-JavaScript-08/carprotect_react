@@ -1,8 +1,7 @@
 import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
-import {  ShieldCheck, Tag } from "@phosphor-icons/react";
-import { ClipLoader } from "react-spinners";
+import { ShieldCheck, Tag, Percent, ArrowLeft, FloppyDisk } from "@phosphor-icons/react";
 import type Insurance from "../../../models/Insurance";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
@@ -37,18 +36,17 @@ function FormInsurance() {
     }
   }, [token]);
 
-
   useEffect(() => {
     if (id !== undefined) {
       buscarPorId(id);
     }
   }, [id]);
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     setInsurance({
       ...insurance,
-      [name]: value,
+      [name]: name === "porcentInsurance" ? Number(value) : value,
     });
   }
 
@@ -65,195 +63,216 @@ function FormInsurance() {
       ToastAlerta("Preencha os campos obrigatórios!", "warning");
       setIsLoading(false);
       return;
-    } else {
+    }
 
-      if (id !== undefined) {
-        try {
-          await atualizar(`/plano`, insurance, setInsurance, {
-            headers: { Authorization: token }
-          });
-          ToastAlerta("Seguro atualizado com sucesso!", "success");
+    if (insurance.porcentInsurance <= 0 || insurance.porcentInsurance > 100) {
+      ToastAlerta("A porcentagem deve estar entre 1 e 100!", "warning");
+      setIsLoading(false);
+      return;
+    }
 
-        } catch (error: any) {
-          if (error.toString().includes('401')) {
-            handleLogout();
-          } else {
-            ToastAlerta('Erro ao atualizar Seguro!', 'error');
-          }
-        }
+    if (id !== undefined) {
+      try {
+        await atualizar(`/plano`, insurance, setInsurance, {
+          headers: { Authorization: token }
+        });
+        ToastAlerta("Seguro atualizado com sucesso!", "success");
 
-      } else {
-        try {
-          await cadastrar(`/plano`, insurance, setInsurance, {
-            headers: { Authorization: token }
-          });
-          ToastAlerta("Seguro cadastrado com sucesso!", "success");
-        } catch (error: any) {
-          if (error.toString().includes('401')) {
-            handleLogout();
-          } else {
-            ToastAlerta('Erro ao cadastrar tema!', 'error');
-          }
+      } catch (error: any) {
+        if (error.toString().includes('401')) {
+          handleLogout();
+        } else {
+          ToastAlerta('Erro ao atualizar Seguro!', 'error');
         }
       }
 
-      setIsLoading(false);
-      retornar();
+    } else {
+      try {
+        await cadastrar(`/plano`, insurance, setInsurance, {
+          headers: { Authorization: token }
+        });
+        ToastAlerta("Seguro cadastrado com sucesso!", "success");
+      } catch (error: any) {
+        if (error.toString().includes('401')) {
+          handleLogout();
+        } else {
+          ToastAlerta('Erro ao cadastrar seguro!', 'error');
+        }
+      }
     }
+
+    setIsLoading(false);
+    retornar();
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#034153] to-[#76AABF] text-[#96A3AB] font-sans">
-
-      <div className="flex-1 ml-80 mr-20">
-
-
-        <div className="flex items-center justify-between px-10 py-6 mb-16 border-b border-[#678391] bg-[#034153] rounded-xl">
-          <h1 className="text-2xl font-bold flex items-center gap-3 text-[#76AABF]">
-            <div className="p-2 rounded-lg bg-[#056174]">
-              <ShieldCheck size={28} weight="bold" className="text-[#96A3AB]" />
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] p-6">
+      <div className="container max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-[#034153] p-8">
+          
+          {/* Header */}
+          <div className="text-center mb-8 pb-6 border-b border-[#76AABF]/30">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#034153] to-[#056174] flex items-center justify-center">
+                <ShieldCheck size={32} color="white" weight="fill" />
+              </div>
             </div>
-            Seguros
-          </h1>
-          <div className="flex items-center gap-4">
-            <span className="px-5 py-2 rounded-lg bg-[#678391] text-[#034153] font-medium flex items-center gap-2">
-              {new Date().toLocaleString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
-            </span>
-            <span className="px-5 py-2 rounded-lg bg-[#678391] text-[#034153] font-medium flex items-center gap-2">
-              {new Date().toLocaleString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-            </span>
-
-            <span className="ml-4 px-4 py-2 rounded-full bg-[#76AABF]/50 text-[#034153] text-xs font-semibold gap-2 flex">
-              <span className="text-[#056174] font-bold animate-pulse">●</span>
-              Sistema Online
-            </span>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#034153] mb-2">
+              {id === undefined ? "Cadastrar Seguro" : "Editar Seguro"}
+            </h1>
+            <p className="text-[#678391] text-lg">Configure os detalhes do plano de seguro</p>
           </div>
-        </div>
 
+          <form className="space-y-8" onSubmit={salvarSeguro}>
+            
+            {/* Seção: Informações Básicas */}
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-white p-6 rounded-xl border-l-4 border-[#034153]">
+              <h3 className="text-xl font-bold text-[#034153] flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#76AABF] flex items-center justify-center">
+                  <ShieldCheck size={20} color="#034153" />
+                </div>
+                Informações Básicas do Seguro
+              </h3>
 
-        <div className="bg-[#034153]/80 backdrop-blur-sm border border-[#678391] rounded-2xl shadow-2xl mx-10 p-8">
-          <div className="container max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <label htmlFor="title" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                    <Tag size={16} className="text-[#76AABF]" />
+                    Nome do Plano *
+                  </label>
+                  <input
+                    type="text"
+                    name="title"
+                    placeholder="Ex: Seguro Auto Completo"
+                    id="title"
+                    value={insurance.title || ""}
+                    onChange={atualizarEstado}
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#034153] focus:outline-none transition-colors"
+                    required
+                  />
+                </div>
 
-            <div className="text-center mb-8 pb-6 border-b border-[#678391]">
-              <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#76AABF] to-[#056174] mb-2">
-                {id === undefined ? "Cadastrar Seguro" : "Editar Seguro"}
-              </h1>
-              <p className="text-[#96A3AB]">Preencha os dados do seguro</p>
+                <div className="space-y-3">
+                  <label htmlFor="porcentInsurance" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                    <Percent size={16} className="text-[#76AABF]" />
+                    Porcentagem do Prêmio *
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      name="porcentInsurance"
+                      id="porcentInsurance"
+                      placeholder="5.5"
+                      min="0.1"
+                      max="100"
+                      step="0.1"
+                      value={insurance.porcentInsurance || ""}
+                      onChange={atualizarEstado}
+                      className="w-full px-4 py-3 pr-12 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#034153] focus:outline-none transition-colors"
+                      required
+                    />
+                    <div className="absolute inset-y-0 right-0 flex items-center pr-4">
+                      <span className="text-[#76AABF] font-bold">%</span>
+                    </div>
+                  </div>
+                  <p className="text-xs text-[#678391]">
+                    Valor entre 0.1% e 100%
+                  </p>
+                </div>
+
+                <div className="md:col-span-2 space-y-3">
+                  <label htmlFor="description" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                    <Tag size={16} className="text-[#76AABF]" />
+                    Descrição do Plano *
+                  </label>
+                  <textarea
+                    name="description"
+                    placeholder="Descreva as coberturas e benefícios deste plano de seguro..."
+                    id="description"
+                    rows={4}
+                    value={insurance.description || ""}
+                    onChange={atualizarEstado}
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#034153] focus:outline-none transition-colors resize-vertical"
+                    required
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="w-full">
-
-              <form className="mx-auto w-full space-y-8" onSubmit={salvarSeguro}>
-
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold text-[#76AABF] flex items-center gap-2 pb-2 border-b border-[#678391]">
-                    <ShieldCheck size={20} className="text-[#056174]" />
-                    Informações do Seguro
-                  </h3>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <label htmlFor="title" className="flex items-center gap-2 text-sm font-medium text-[#96A3AB]">
-                        <Tag size={16} className="text-[#056174]" />
-                        Nome do Seguro *
-                      </label>
-                      <input
-                        type="text"
-                        name="title"
-                        placeholder="Título"
-                        id="title"
-                        value={insurance.title}
-                        onChange={atualizarEstado}
-                        className="w-full px-4 py-3 bg-[#678391]/50 border border-[#96A3AB]/50 rounded-xl text-[#034153] placeholder-[#96A3AB] focus:outline-none focus:ring-2 focus:ring-[#76AABF]/50 focus:border-[#76AABF]/50 transition-all duration-200"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="description" className="flex items-center gap-2 text-sm font-medium text-[#96A3AB]">
-                        <Tag size={16} className="text-[#056174]" />
-                        Descrição *
-                      </label>
-                      <input
-                        type="text"
-                        name="description"
-                        placeholder="Descrição"
-                        id="description"
-                        value={insurance.description}
-                        onChange={atualizarEstado}
-                        className="w-full px-4 py-3 bg-[#678391]/50 border border-[#96A3AB]/50 rounded-xl text-[#034153] placeholder-[#96A3AB] focus:outline-none focus:ring-2 focus:ring-[#76AABF]/50 focus:border-[#76AABF]/50 transition-all duration-200"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="porcentInsurance" className="flex items-center gap-2 text-sm font-medium text-[#96A3AB]">
-                        <Tag size={16} className="text-[#056174]" />
-                        % do Prêmio *
-                      </label>
-                      <input
-                        type="number"
-                        name="porcentInsurance"
-                        id="porcentInsurance"
-                        placeholder="Porcentagem do prêmio"
-                        value={insurance.porcentInsurance}
-                        onChange={atualizarEstado}
-                        className="w-full px-4 py-3 bg-[#678391]/50 border border-[#96A3AB]/50 rounded-xl text-[#034153] placeholder-[#96A3AB] focus:outline-none focus:ring-2 focus:ring-[#76AABF]/50 focus:border-[#76AABF]/50 transition-all duration-200"
-                      />
-                    </div>
-
-                 
-
-
-
-
+            {/* Preview do Seguro */}
+            {(insurance.title || insurance.description || insurance.porcentInsurance) && (
+              <div className="bg-gradient-to-br from-[#e8f4f8] to-white p-6 rounded-xl border-l-4 border-[#056174]">
+                <h3 className="text-xl font-bold text-[#056174] flex items-center gap-3 mb-4">
+                  <div className="w-8 h-8 rounded-full bg-[#76AABF] flex items-center justify-center">
+                    <ShieldCheck size={20} color="#056174" />
+                  </div>
+                  Preview do Plano
+                </h3>
+                
+                <div className="bg-white p-4 rounded-lg border border-[#76AABF]/20">
+                  <h4 className="font-bold text-[#034153] text-lg mb-2">
+                    {insurance.title || "Nome do Plano"}
+                  </h4>
+                  <p className="text-[#678391] mb-3">
+                    {insurance.description || "Descrição do plano"}
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-[#678391]">Prêmio:</span>
+                    <span className="font-bold text-[#76AABF] text-lg">
+                      {insurance.porcentInsurance || 0}%
+                    </span>
                   </div>
                 </div>
+              </div>
+            )}
 
+            {/* Botões */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-[#76AABF]/30">
+              <button
+                type="button"
+                onClick={retornar}
+                className="flex-1 px-6 py-4 bg-[#96A3AB] hover:bg-[#678391] text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 hover:cursor-pointer"
+              >
+                <ArrowLeft size={20} />
+                Cancelar
+              </button>
 
-
-
-
-
-
-                <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-[#678391]">
-                  <button
-                    type="button"
-                    onClick={retornar}
-                    className="flex-1 px-6 py-3 bg-[#678391]/50 hover:bg-[#678391]/70 border border-[#96A3AB]/50 text-[#034153] rounded-xl font-medium transition-all duration-200 hover:scale-[1.02] flex items-center justify-center gap-2"
-                  >
-                    Cancelar
-                  </button>
-
-                  <button
-                    className="flex-1 px-6 py-3 bg-gradient-to-r from-[#056174] to-[#76AABF] hover:from-[#034153] hover:to-[#678391] disabled:from-[#678391] disabled:to-[#96A3AB] text-white rounded-xl font-medium transition-all duration-200 hover:scale-[1.02] disabled:scale-100 flex items-center justify-center gap-2 shadow-lg disabled:opacity-50"
-                    type="submit"
-
-                  >
-                    {isLoading ? (
-                      <>
-                        <ClipLoader color="#034153" size={20} />
-                        <span>Processando...</span>
-                      </>
-                    ) : (
-                      <span>{id === undefined ? "Cadastrar Seguro" : "Atualizar Seguro"}</span>
-                    )}
-                  </button>
-                </div>
-
-              </form>
-
-
+              <button
+                className="flex-1 px-6 py-4 bg-gradient-to-r from-[#034153] to-[#056174] hover:from-[#056174] hover:to-[#034153] text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:cursor-pointer"
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Processando...
+                  </>
+                ) : (
+                  <>
+                    <FloppyDisk size={20} />
+                    {id === undefined ? "Cadastrar Seguro" : "Atualizar Seguro"}
+                  </>
+                )}
+              </button>
             </div>
+          </form>
 
-          </div>
+          {/* Loading Overlay */}
+          {isLoading && (
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+              <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-[#034153] text-center">
+                <div className="w-16 h-16 border-4 border-[#76AABF] border-t-[#034153] rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-[#034153] font-semibold text-lg">
+                  {id === undefined ? "Cadastrando seguro..." : "Atualizando seguro..."}
+                </p>
+                <p className="text-[#678391] text-sm mt-2">Aguarde um momento</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
     </div>
-
-
-  )
+  );
 }
 
 export default FormInsurance

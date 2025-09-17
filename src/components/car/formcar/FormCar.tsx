@@ -5,7 +5,7 @@ import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 import type Insurance from "../../../models/Insurance";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { Calendar, CurrencyDollarSimple, Hash, Shield, Tag } from "phosphor-react";
+import { Calendar, CurrencyDollarSimple, Hash, Shield, Tag, ArrowLeft, FloppyDisk } from "phosphor-react";
 import { CarIcon } from "@phosphor-icons/react";
 
 function FormCar() {
@@ -121,167 +121,220 @@ function FormCar() {
   const carregandoSeguro = !car.insurance?.id;
 
   return (
-    <div className="bg-slate-800/40 backdrop-blur-sm border border-slate-700/30 rounded-2xl shadow-2xl mx-10 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] p-6">
       <div className="container max-w-4xl mx-auto">
-        <div className="flex items-center justify-center bg-gray-900 flex-col p-6 rounded-lg">
-          <div className="text-center mb-8 pb-6 border-b border-slate-700/30">
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2">
+        <div className="bg-white rounded-2xl shadow-xl border-t-4 border-[#034153] p-8">
+          
+          {/* Header */}
+          <div className="text-center mb-8 pb-6 border-b border-[#76AABF]/30">
+            <div className="flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#034153] to-[#056174] flex items-center justify-center">
+                <CarIcon size={32} color="white" />
+              </div>
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-[#034153] mb-2">
               {id === undefined ? "Cadastrar Carro" : "Editar Carro"}
             </h1>
-            <p className="text-slate-400">Preencha os dados do veículo</p>
+            <p className="text-[#678391] text-lg">Preencha os dados do veículo para continuar</p>
           </div>
 
-          <form className="mx-auto w-full space-y-8" onSubmit={salvarCar}>
+          <form className="space-y-8" onSubmit={salvarCar}>
+            
             {/* Seção: Informações do Carro */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-slate-300 flex items-center gap-2 pb-2 border-b border-slate-700/50">
-                <CarIcon size={20} className="text-blue-400" />
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-white p-6 rounded-xl border-l-4 border-[#034153]">
+              <h3 className="text-xl font-bold text-[#034153] flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#76AABF] flex items-center justify-center">
+                  <CarIcon size={20} color="#034153" />
+                </div>
                 Informações do Carro
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="model" className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                    <Tag size={16} className="text-blue-400" />
+                <div className="space-y-3">
+                  <label htmlFor="model" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                    <Tag size={16} className="text-[#76AABF]" />
                     Modelo do Carro *
                   </label>
                   <input
                     type="text"
                     id="model"
                     name="model"
-                    placeholder="Ex: Fiesta, Uno..."
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white"
+                    placeholder="Ex: Fiesta, Uno, Civic..."
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#034153] focus:outline-none transition-colors"
                     value={car.model || ""}
                     onChange={atualizarEstado}
+                    required
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="description" className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                    <Tag size={16} className="text-blue-400" />
-                    Descrição do carro *
-                  </label>
-                  <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    placeholder="Ex: Carro bem conservado..."
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white"
-                    value={car.description || ""}
-                    onChange={atualizarEstado}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="licensePlate" className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                    <Hash size={16} className="text-blue-400" />
-                    Número da Placa *
+                <div className="space-y-3">
+                  <label htmlFor="licensePlate" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                    <Hash size={16} className="text-[#76AABF]" />
+                    Placa do Veículo *
                   </label>
                   <input
                     type="text"
                     id="licensePlate"
                     name="licensePlate"
-                    placeholder="Digite o número da placa"
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white"
+                    placeholder="ABC-1234"
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#034153] focus:outline-none transition-colors font-mono"
                     value={car.licensePlate || ""}
                     onChange={atualizarEstado}
+                    required
+                  />
+                </div>
+
+                <div className="md:col-span-2 space-y-3">
+                  <label htmlFor="description" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                    <Tag size={16} className="text-[#76AABF]" />
+                    Descrição do Carro *
+                  </label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Descreva as características do veículo..."
+                    rows={3}
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#034153] focus:outline-none transition-colors resize-vertical"
+                    value={car.description || ""}
+                    onChange={atualizarEstado}
+                    required
                   />
                 </div>
               </div>
             </div>
 
             {/* Seção: Informações Financeiras */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-slate-300 flex items-center gap-2 pb-2 border-b border-slate-700/50">
-                <CurrencyDollarSimple size={20} className="text-emerald-400" />
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-white p-6 rounded-xl border-l-4 border-[#056174]">
+              <h3 className="text-xl font-bold text-[#056174] flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#76AABF] flex items-center justify-center">
+                  <CurrencyDollarSimple size={20} color="#056174" />
+                </div>
                 Informações Financeiras
               </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="price" className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                    <CurrencyDollarSimple size={16} className="text-emerald-400" />
-                    Preço do Veículo *
+                <div className="space-y-3">
+                  <label htmlFor="price" className="flex items-center gap-2 text-sm font-semibold text-[#056174]">
+                    <CurrencyDollarSimple size={16} className="text-[#76AABF]" />
+                    Valor do Veículo *
                   </label>
                   <input
                     type="number"
                     id="price"
                     name="price"
-                    placeholder="Digite o valor do veículo"
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white"
+                    placeholder="50000"
+                    min="0"
+                    step="0.01"
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] placeholder-[#96A3AB] focus:border-[#056174] focus:outline-none transition-colors"
                     value={car.price || ""}
                     onChange={atualizarEstado}
+                    required
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="manufacturingYear" className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                    <Calendar size={16} className="text-emerald-400" />
+                <div className="space-y-3">
+                  <label htmlFor="manufacturingYear" className="flex items-center gap-2 text-sm font-semibold text-[#056174]">
+                    <Calendar size={16} className="text-[#76AABF]" />
                     Ano de Fabricação *
                   </label>
                   <input
                     type="date"
                     id="manufacturingYear"
                     name="manufacturingYear"
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white"
+                    className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] focus:border-[#056174] focus:outline-none transition-colors"
                     value={car.manufacturingYear || ""}
                     onChange={atualizarEstado}
+                    required
                   />
                 </div>
               </div>
             </div>
 
             {/* Seção: Seguro */}
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-slate-300 flex items-center gap-2 pb-2 border-b border-slate-700/50">
-                <Shield size={20} className="text-purple-400" />
+            <div className="bg-gradient-to-br from-[#e8f4f8] to-white p-6 rounded-xl border-l-4 border-[#034153]">
+              <h3 className="text-xl font-bold text-[#034153] flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#76AABF] flex items-center justify-center">
+                  <Shield size={20} color="#034153" />
+                </div>
                 Plano de Seguro
               </h3>
 
-              <div className="space-y-2">
-                <label htmlFor="insuranceId" className="flex items-center gap-2 text-sm font-medium text-slate-300">
-                  <Shield size={16} className="text-purple-400" />
+              <div className="space-y-3">
+                <label htmlFor="insuranceId" className="flex items-center gap-2 text-sm font-semibold text-[#034153]">
+                  <Shield size={16} className="text-[#76AABF]" />
                   Selecione o Plano de Seguro *
                 </label>
                 <select
                   id="insuranceId"
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white"
+                  className="w-full px-4 py-3 bg-white border-2 border-[#76AABF]/30 rounded-xl text-[#678391] focus:border-[#034153] focus:outline-none transition-colors"
                   onChange={(e) =>
                     setCar({
                       ...car,
                       insurance: { id: Number(e.target.value) }
                     })
                   }
+                  value={car.insurance?.id || ""}
+                  required
                 >
-                  <option value="">Selecione um Plano</option>
+                  <option value="">Escolha um plano de seguro</option>
                   {insurances.map((seguro) => (
                     <option key={seguro.id} value={seguro.id}>
-                      {seguro.title}
+                      {seguro.title} - {seguro.porcentInsurance}% de prêmio
                     </option>
                   ))}
                 </select>
+                
+                {insurances.length === 0 && (
+                  <p className="text-[#678391] text-sm italic">
+                    Carregando planos de seguro...
+                  </p>
+                )}
               </div>
             </div>
 
             {/* Botões */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-slate-700/30">
+            <div className="flex flex-col sm:flex-row gap-4 pt-8 border-t border-[#76AABF]/30">
               <button
                 type="button"
                 onClick={retornar}
-                className="flex-1 px-6 py-3 bg-slate-600/50 hover:bg-slate-600/70 text-slate-300 rounded-xl font-medium transition-all"
+                className="flex-1 px-6 py-4 bg-[#96A3AB] hover:bg-[#678391] text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 hover:cursor-pointer"
               >
+                <ArrowLeft size={20} />
                 Cancelar
               </button>
 
               <button
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all"
+                className="flex-1 px-6 py-4 bg-gradient-to-r from-[#034153] to-[#056174] hover:from-[#056174] hover:to-[#034153] text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none hover:cursor-pointer"
                 type="submit"
-                disabled={carregandoSeguro}
+                disabled={isLoading}
               >
-                {isLoading ? "Processando..." : id === undefined ? "Cadastrar Carro" : "Atualizar Carro"}
+                {isLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Processando...
+                  </>
+                ) : (
+                  <>
+                    <FloppyDisk size={20} />
+                    {id === undefined ? "Cadastrar Carro" : "Atualizar Carro"}
+                  </>
+                )}
               </button>
             </div>
           </form>
+
+          {/* Loading Overlay */}
+          {isLoading && (
+            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+              <div className="bg-white p-8 rounded-2xl shadow-xl border-t-4 border-[#034153] text-center">
+                <div className="w-16 h-16 border-4 border-[#76AABF] border-t-[#034153] rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-[#034153] font-semibold text-lg">
+                  {id === undefined ? "Cadastrando carro..." : "Atualizando carro..."}
+                </p>
+                <p className="text-[#678391] text-sm mt-2">Aguarde um momento</p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
