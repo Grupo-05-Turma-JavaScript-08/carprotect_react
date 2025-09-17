@@ -101,7 +101,7 @@ function Contato() {
                     {/* Formulário */}
                     <div className="w-full bg-gradient-to-br from-[#e8f4f8] to-white shadow-xl rounded-2xl p-8 border-t-4 border-[#056174]">
                         <h2 className="text-3xl text-center mb-6 text-[#034153] font-bold">Formulário de Contato</h2>
-                        <form className="flex flex-col space-y-5">
+                        <form className="flex flex-col space-y-5" >
                             <input 
                                 name="nome" 
                                 type="text" 
@@ -137,7 +137,7 @@ function Contato() {
                             />
                             <button 
                                 type="submit" 
-                                className="bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg p-4 font-semibold text-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                                className="bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg p-4 font-semibold text-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:cursor-pointer"
                             >
                                 Enviar Mensagem
                             </button>

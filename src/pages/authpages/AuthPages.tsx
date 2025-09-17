@@ -180,16 +180,7 @@ export default function AuthPage() {
                                         value={usuario.username}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstadoCadastro(e)}
                                     />
-                                    <label htmlFor="photoUrl">Foto de Perfil</label>
-                                    <input
-                                        type="text"
-                                        placeholder="coloque o link da sua foto de perfil"
-                                        className="w-full px-4 py-2 border rounded-lg bg-gray-200"
-                                        id="photoUrl"
-                                        name="photoUrl"
-                                        value={usuario.photoUrl}
-                                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstadoCadastro(e)}
-                                    />
+                                 
                                     <label htmlFor="password">Senha</label>
                                     <input
                                         type="password"

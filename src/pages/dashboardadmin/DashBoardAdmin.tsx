@@ -15,6 +15,7 @@ function DashboardAdmin() {
   const [expandedCards, setExpandedCards] = useState<Set<number>>(new Set());
   const { user, handleLogout } = useContext(AuthContext);
   const token = user.token;
+  
 
   useEffect(() => {
     if (token === "") {
@@ -110,6 +111,7 @@ function DashboardAdmin() {
         : 0),
     0
   );
+
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3]">
@@ -246,6 +248,7 @@ function DashboardAdmin() {
                 <p className="text-xs text-[#678391] mt-1">filtrados / total</p>
               )}
             </div>
+        
           </div>
         </div>
 
