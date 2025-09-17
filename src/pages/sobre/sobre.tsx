@@ -37,7 +37,7 @@ function Sobre() {
           <img 
             src="/equipe.jpg" 
             alt="Equipe de Atendimento" 
-            className="w-full max-w-sm md:max-w-md h-auto object-cover rounded-2xl relative z-10 transform transition-transform duration-500 hover:scale-105 shadow-lg" 
+            className="w-full max-w-sm md:max-w-md h-auto lg:max-w-lg object-cover rounded-2xl relative z-10 transform transition-transform duration-500 hover:scale-105 shadow-lg" 
           />
         </div>
       </div>
