@@ -16,7 +16,9 @@ function Navbar() {
     '/deletarcarro',
     '/cadastrarseguro',
     '/editarseguro',
-    '/deletarseguro'
+    '/deletarseguro',
+    
+    
   ];
 
   // Verificar se a rota atual está na lista de rotas ocultas

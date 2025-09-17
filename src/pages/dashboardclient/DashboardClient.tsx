@@ -65,7 +65,7 @@ function DashboardClient() {
             <img 
               src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" 
               alt="Logo da Empresa" 
-              className="w-32 transition-transform duration-300 hover:scale-105"
+              className="w-32 transition-transform duration-300 hover:scale-105 "
             />
           </div>
           <div className="flex-grow text-center">
@@ -153,7 +153,7 @@ function DashboardClient() {
               </div>
               <p className="text-[#678391] text-lg mb-4">Nenhum carro encontrado.</p>
               <Link to='/cadastrarcarro'>
-                <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105">
+                <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 hover:cursor-pointer">
                   Cadastrar Primeiro Carro
                 </button>
               </Link>
@@ -214,12 +214,12 @@ function DashboardClient() {
                       </div>
                       <div className="col-span-1 flex flex-row gap-2">
                         <Link to={`/editarcarro/${carro.id}`}>
-                          <button className="p-2 text-white bg-gradient-to-l from-[#034153] to-[#056174] rounded-lg" title="Editar">
+                          <button className="p-2.5 text-white bg-gradient-to-l from-[#034153] to-[#056174] rounded-lg hover:cursor-pointer" title="Editar">
                             <PencilSimple size={16} />
                           </button>
                         </Link>
                         <Link to={`/deletarcarro/${carro.id}`}>
-                          <button className="p-2 text-[#034153] border-2 border-[#034153] rounded-lg" title="Excluir">
+                          <button className="p-2 text-[#034153] border-2 border-[#034153] rounded-lg hover:cursor-pointer" title="Excluir">
                             <Trash size={16} />
                           </button>
                         </Link>

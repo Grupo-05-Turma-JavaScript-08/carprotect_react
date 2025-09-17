@@ -191,14 +191,14 @@ function DashboardAdmin() {
           <div className="flex justify-center gap-4 mb-6">
             <button
               onClick={expandAllCards}
-              className="px-4 py-2 sm:px-6 sm:py-3 bg-[#76AABF] text-white rounded-lg hover:bg-[#056174] text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-[#76AABF] text-white rounded-lg hover:bg-[#056174] text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2 hover:cursor-pointer"
             >
               <CaretDown size={16} />
               Expandir Todos
             </button>
             <button
               onClick={collapseAllCards}
-              className="px-4 py-2 sm:px-6 sm:py-3 bg-[#96A3AB] text-white rounded-lg hover:bg-[#678391] text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+              className="px-4 py-2 sm:px-6 sm:py-3 bg-[#96A3AB] text-white rounded-lg hover:bg-[#678391] text-xs sm:text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2 hover:cursor-pointer"
             >
               <CaretUp size={16} />
               Colapsar Todos
@@ -263,7 +263,7 @@ function DashboardAdmin() {
                   </p>
                   <button
                     onClick={clearSearch}
-                    className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105"
+                    className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 hover:cursor-pointer"
                   >
                     Limpar busca
                   </button>
@@ -453,6 +453,8 @@ function DashboardAdmin() {
                   </a>
                 </li>
               </ul>
+              <Link to='/suporte'>
+              <button className="mt-4 bg-[#056174] hover:bg-[#034153] text-white font-semibold py-2 px-4 rounded transition-colors hover:cursor-pointer">Suporte</button></Link>
             </div>
             <div className="hidden md:flex justify-end items-center">
               <img 

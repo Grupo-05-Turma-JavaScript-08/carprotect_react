@@ -163,7 +163,7 @@ function DeleteInsurance() {
                         <button
                             onClick={retornar}
                             disabled={isLoading}
-                            className="flex-1 px-6 py-4 bg-[#96A3AB] hover:bg-[#678391] disabled:bg-gray-300 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="flex-1 px-6 py-4 bg-[#96A3AB] hover:bg-[#678391] disabled:bg-gray-300 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:cursor-pointer"
                         >
                             <ArrowLeft size={20} />
                             Cancelar
@@ -172,7 +172,7 @@ function DeleteInsurance() {
                         <button
                             onClick={deletarInsurance}
                             disabled={isLoading}
-                            className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-500 disabled:from-red-300 disabled:to-red-300 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="flex-1 px-6 py-4 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-500 disabled:from-red-300 disabled:to-red-300 text-white rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed flex items-center justify-center gap-2 hover:cursor-pointer"
                         >
                             {isLoading ? (
                                 <>
