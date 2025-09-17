@@ -35,7 +35,7 @@ function Sobre() {
             <div className="w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full bg-gradient-to-br from-[#96A3AB] to-[#76AABF] opacity-30"></div>
           </div>
           <img 
-            src="/equipe.jpg" 
+            src="https://i.ibb.co/wFFnj4mW/equipe.jpg" 
             alt="Equipe de Atendimento" 
             className="w-full max-w-sm md:max-w-md h-auto lg:max-w-lg object-cover rounded-2xl relative z-10 transform transition-transform duration-500 hover:scale-105 shadow-lg" 
           />
@@ -56,15 +56,7 @@ function Sobre() {
               </button>
             </div>
           )}
-          <video 
-            controls 
-            autoPlay={isVideoPlaying}
-            className="w-full h-auto max-h-96 rounded-xl"
-            onClick={handleVideoPlay}
-          >
-            <source src="/Nexoseguros.mp4" type="video/mp4" />
-            Seu navegador não suporta o elemento de vídeo.
-          </video>
+          <iframe src="https://drive.google.com/file/d/1OmOpok44JSFJh8vApwyMmMnF62d_9Mo0/preview" width="890" height="490" allow="autoplay"></iframe>
         </div>
       </div>
 
