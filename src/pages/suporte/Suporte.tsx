@@ -9,7 +9,7 @@ export type SupportPerson = {
 };
 
 const supportTeam: SupportPerson[] = [
-  { name: "Evertton", role: "Desenvolvedor", email: "dev.ewerttongoncalves@gmail.com", linkedin: "https://www.linkedin.com/in/ewerttongoncalves/", avatarUrl: "https://i.ibb.co/MDFd3yTw/Image-29.jpg" },
+  { name: "Ewertton", role: "Desenvolvedor", email: "dev.ewerttongoncalves@gmail.com", linkedin: "https://www.linkedin.com/in/ewerttongoncalves/", avatarUrl: "https://i.ibb.co/MDFd3yTw/Image-29.jpg" },
   { name: "Felipe", role: "Desenvolvedor", email: "felipealves.santos93@gmail.com", linkedin: "https://www.linkedin.com/in/felipe-alves-949a58296/", avatarUrl: "https://i.ibb.co/cKBFYXc2/Image-35.jpg" },
   { name: "Gabriel", role: "Desenvolvedor", email: "gmartins9042@gmail.com", linkedin: "https://www.linkedin.com/in/gabrielmartins-/", avatarUrl: "https://i.ibb.co/ZpPT0fvs/Image-32.jpg" },
   { name: "Larrisa", role: "Desenvolvedora", email: "rrs.larissa@gmail.com", linkedin: "https://www.linkedin.com/in/larissa-r-ruiz/", avatarUrl: "https://i.ibb.co/fGD4ggFS/Image-34.jpg" },
