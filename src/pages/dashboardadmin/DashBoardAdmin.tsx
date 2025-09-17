@@ -380,40 +380,58 @@ function DashboardAdmin() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white p-4 mt-auto">
-        <div className="max-w-7xl mx-auto px-4 py-8 flex justify-between items-center">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">Entre em contato</h3>
-            <ul className="text-sm space-y-1">
-              <li>
-                <span className="font-medium">Telefone:</span>{" "}
-                <a href="tel:08007777777" className="hover:underline">
-                  0800 777 7777
-                </a>
-              </li>
-              <li>
-                <span className="font-medium">WhatsApp:</span>{" "}
-                <a
-                  href="https://wa.me/5511977777777"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline"
-                >
-                  (11) 97777-7777
-                </a>
-              </li>
-              <li>
-                <span className="font-medium">E-mail:</span>{" "}
-                <a
-                  href="mailto:contato@carprotect.com.br"
-                  className="hover:underline"
-                >
-                  email@email.com.br
-                </a>
-              </li>
-            </ul>
+            <footer className=" bg-gray-800 text-white p-4 mt-auto">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 justify-center">
+            <div className="text-left -mt-20">
+              <h3 className="text-lg font-semibold mb-2">Entre em contato</h3>
+              <ul className="text-sm space-y-1">
+                <li>
+                  <span className="font-medium">Telefone:</span>{" "}
+                  <a
+                    href="tel:08007777777"
+                    className="hover:underline"
+                    aria-label="Ligar para 0800 777 7777"
+                  >
+                    0800 777 7777
+                  </a>
+                </li>
+                <li>
+                  <span className="font-medium">WhatsApp:</span>{" "}
+                  <a
+                    href="https://wa.me/5511977777777"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                    aria-label="Abrir WhatsApp"
+                  >
+                    (11) 97777-7777
+                  </a>
+                </li>
+                <li>
+                  <span className="font-medium">E-mail:</span>{" "}
+                  <a
+                    href="mailto:contato@carprotect.com.br"
+                    className="hover:underline"
+                    aria-label="Enviar email"
+                  >
+                    email@email.com.br
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="flex justify-end">
+              <img src="https://i.ibb.co/MLCDmSL/raw.png" alt="" 
+              className="w-60 -mt-20"/>
+              <div className="text-center md:text-right">
+
+                {/*} 
+                <button className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors">
+                    Suporte
+                </button>{*/}
+              </div>
+            </div>
           </div>
-          <p className="text-sm">Copyright © 2025</p>
         </div>
       </footer>
     </div>

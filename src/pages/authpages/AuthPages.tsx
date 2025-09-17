@@ -100,7 +100,7 @@ export default function AuthPage() {
     return (
         <>
 
-            <div className="grid grid-cols-2 h-screen bg-[#056174]">
+            <div className="grid grid-cols-2 h-screen bg-gradient-to-l from-[#056174] to-[#153441]">
 
                 {/* Card centralizado na primeira coluna */}
                 <div className="flex items-center justify-center">
@@ -125,7 +125,7 @@ export default function AuthPage() {
                                     <input
                                         type="text"
                                         placeholder="Digite seu email"
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none bg-gray-200"
                                         name="username"
                                         id="username"
                                         value={userLogin.username}
@@ -135,7 +135,7 @@ export default function AuthPage() {
                                     <input
                                         type="text"
                                         placeholder="Digite sua senha"
-                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none"
+                                        className="w-full px-4 py-2 border rounded-lg focus:outline-none bg-gray-200"
                                         name="password"
                                         id="password"
                                         value={userLogin.password}
@@ -156,51 +156,56 @@ export default function AuthPage() {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -50 }}
                                     transition={{ duration: 0.4 }}
-                                    className="flex flex-col space-y-4"
+                                    className="flex flex-col space-y-2"
                                     onSubmit={cadastrarNovoUsuario}
                                 >
-
+                                    
+                                <label htmlFor="name">Nome:</label>
                                     <input
                                         type="text"
                                         placeholder="Digite seu nome"
-                                        className="w-full px-4 py-2 border rounded-lg"
+                                        className="w-full px-4 py-2 border rounded-lg bg-gray-200"
                                         id="name"
                                         name="name"
                                         value={usuario.name}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstadoCadastro(e)}
                                     />
+                                    <label htmlFor="username">Usuário</label>
                                     <input
                                         type="text"
                                         placeholder="Digite seu melhor email"
-                                        className="w-full px-4 py-2 border rounded-lg"
+                                        className="w-full px-4 py-2 border rounded-lg bg-gray-200"
                                         id="username"
                                         name="username"
                                         value={usuario.username}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstadoCadastro(e)}
                                     />
+                                    <label htmlFor="photoUrl">Foto de Perfil</label>
                                     <input
                                         type="text"
                                         placeholder="coloque o link da sua foto de perfil"
-                                        className="w-full px-4 py-2 border rounded-lg"
+                                        className="w-full px-4 py-2 border rounded-lg bg-gray-200"
                                         id="photoUrl"
                                         name="photoUrl"
                                         value={usuario.photoUrl}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstadoCadastro(e)}
                                     />
+                                    <label htmlFor="password">Senha</label>
                                     <input
                                         type="password"
                                         placeholder="Digite sua senha"
-                                        className="w-full px-4 py-2 border rounded-lg"
+                                        className="w-full px-4 py-2 border rounded-lg bg-gray-200"
                                         id="password"
                                         name="password"
                                         value={usuario.password}
                                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstadoCadastro(e)}
                                     />
 
+                                    <label htmlFor="confirmarSenha">Confirme sua Senha</label>
                                     <input
                                         type="password"
                                         placeholder="Confirme sua Senha"
-                                        className="w-full px-4 py-2 border rounded-lg"
+                                        className="w-full px-4 py-2 border rounded-lg bg-gray-200"
                                         id="confirmarSenha"
                                         name="confirmarSenha"
                                         value={confirmarSenha}
@@ -232,11 +237,8 @@ export default function AuthPage() {
 
                 {/* Imagem na segunda coluna */}
                 <div className="flex items-center justify-center">
-                    <img
-                        src="https://i.ibb.co/xqZxzmH1/output-onlinepngtools-1.png"
-                        alt="Imagem Logo"
-                        className="max-h-[500px] object-contain"
-                    />
+                     <img src="https://i.ibb.co/MLCDmSL/raw.png" alt=""
+                                className="flex items-center justify-center mr-30" />
                 </div>
             </div>
         </>

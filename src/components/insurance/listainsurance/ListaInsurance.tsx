@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import type Insurance from "../../../models/Insurance";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
-import { ToastAlerta } from "../../../utils/ToastAlert";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { motion } from "framer-motion";
 
 function ListaInsurance() {

@@ -58,11 +58,11 @@ function Contato() {
 
                                 <li>
                                     <a
-                                        href="mailto:contato@carprotect.com.br"
+                                        href="mailto:contato@nexoseguros.com.br"
                                         className="flex flex-row hover:underline"
                                         aria-label="Enviar email"
                                     >
-                                        <EnvelopeSimpleIcon size={28} />contato@carprotect.com.br
+                                        <EnvelopeSimpleIcon size={28} />contato@nexoseguros.com.br
                                     </a>
                                 </li>
                             </ul>

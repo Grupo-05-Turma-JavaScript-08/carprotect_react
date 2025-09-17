@@ -1,14 +1,42 @@
 import { LinkedinLogoIcon, InstagramLogoIcon, FacebookLogoIcon} from "@phosphor-icons/react";
 import type { JSX } from "react";
+import { useLocation } from "react-router-dom";
 
 function Footer(): JSX.Element {
   const year = new Date().getFullYear();
+const location = useLocation();
+  
+  // Lista de rotas onde a navbar NÃO deve aparecer
+  const hiddenNavbarRoutes = [
+    '/dashboard',
+    '/dashboardadmin',
+    '/dashboardcliente',
+    '/cadastrarcarro',
+    '/editarcarro',
+    '/deletarcarro',
+    '/cadastrarseguro',
+    '/editarseguro',
+    '/deletarseguro'
+  ];
+  
+  // Verificar se a rota atual está na lista de rotas ocultas
+  // Também verifica rotas dinâmicas como /editarcarro/123
+  const shouldHideNavbar = hiddenNavbarRoutes.some(route => 
+    location.pathname === route || location.pathname.startsWith(route + '/')
+  );
+  
+  // Se deve esconder, retorna null (componente não renderiza)
+  if (shouldHideNavbar) {
+    return null;
+  }
+
+  
 
   return (
     <footer className="bg-gray-200 text-[#678391]">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6">
-          <div className="text-left">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 -mt-20">
+          <div className="text-left ">
             <h3 className="text-lg font-semibold mb-2">Entre em contato</h3>
             <ul className="text-sm space-y-1">
               <li>
@@ -49,7 +77,7 @@ function Footer(): JSX.Element {
             <img
               src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png"
               alt="output-onlinepngtools"
-              className="w-32 sm:w-100 object-contain"
+              className="w-32 sm:w-60 object-contain"
             />
           </div>
         </div>
@@ -84,7 +112,7 @@ function Footer(): JSX.Element {
               <FacebookLogoIcon size={28} weight="bold" />
             </a>
           </div>
-          <p className="text-sm">CarProtect | &copy; {year}</p>
+          <p className="text-sm">Nexo | &copy; {year}</p>
         </div>
       </div>
     </footer>

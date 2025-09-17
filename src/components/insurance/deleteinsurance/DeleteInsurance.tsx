@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import type Insurance from "../../../models/Insurance";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar, deletar } from "../../../services/Service";
-import { ToastAlerta } from "../../../utils/ToastAlert";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
 function DeleteInsurance() {
@@ -75,7 +75,7 @@ function DeleteInsurance() {
                 <div className="max-w-md mx-auto mt-16 p-6  rounded-lg shadow-md font-sans text-center bg-[#0e6c8b]/30">
                     <h2 className="text-2xl font-semibold  mb-6">Confirmar Exclusão</h2>
                     <p className="text-lg mb-8">
-                        Tem certeza que deseja deletar o carro{" "}
+                        Tem certeza que deseja deletar o seguro{" "}
                         <strong>{insurance.title || "?"}</strong>?
                     </p>
 

@@ -269,8 +269,8 @@ function DashboardClient() {
 
       <footer className=" bg-gray-800 text-white p-4 mt-auto">
         <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6">
-            <div className="text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 justify-center">
+            <div className="text-left -mt-20">
               <h3 className="text-lg font-semibold mb-2">Entre em contato</h3>
               <ul className="text-sm space-y-1">
                 <li>
@@ -308,7 +308,8 @@ function DashboardClient() {
               </ul>
             </div>
             <div className="flex justify-end">
-              <p className="text-lg mt-4">Copyright © 2025</p>
+              <img src="https://i.ibb.co/MLCDmSL/raw.png" alt="" 
+              className="w-60 -mt-20"/>
               <div className="text-center md:text-right">
 
                 {/*} 

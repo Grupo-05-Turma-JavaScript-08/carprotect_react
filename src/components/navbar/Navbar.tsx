@@ -1,13 +1,43 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
+  const location = useLocation();
+  
+  // Lista de rotas onde a navbar NÃO deve aparecer
+  const hiddenNavbarRoutes = [
+    '/dashboard',
+    '/dashboardadmin',
+    '/dashboardcliente',
+    '/cadastrarcarro',
+    '/editarcarro',
+    '/deletarcarro',
+    '/cadastrarseguro',
+    '/editarseguro',
+    '/deletarseguro'
+  ];
+  
+  // Verificar se a rota atual está na lista de rotas ocultas
+  // Também verifica rotas dinâmicas como /editarcarro/123
+  const shouldHideNavbar = hiddenNavbarRoutes.some(route => 
+    location.pathname === route || location.pathname.startsWith(route + '/')
+  );
+  
+  // Se deve esconder, retorna null (componente não renderiza)
+  if (shouldHideNavbar) {
+    return null;
+  }
+
   return (
     <header className="bg-gray-200 text-[#678391]">
       <nav className="max-w-7xl mx-auto flex items-center justify-between p-4">
         
         <div className="flex items-center gap-6">
-          <Link to="/home" className="text-2xl font-bold">
-            <img src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" alt="output-onlinepngtools" className="w-50"></img>
+          <Link to="/" className="text-2xl font-bold">
+            <img 
+              src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" 
+              alt="output-onlinepngtools" 
+              className="w-50 -m-10"
+            />
           </Link>
 
           <div className="flex gap-4 text-lg">

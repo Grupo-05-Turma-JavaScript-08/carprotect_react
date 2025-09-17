@@ -58,8 +58,8 @@ function Home() {
 
 
                     <article className="w-full lg:w-1/2 flex flex-col justify-center ">
-                        <h3 className="text-white text-lg bg-sky-800 w-full md:w-1/3 -mb-5 justify-center flex">
-                            CarProtec  Seguro para
+                        <h3 className="text-white text-lg  w-full md:w-1/3 -mb-5 justify-center flex">
+                            Nexo  Seguro para
                         </h3>
                         <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white">
                             Automóveis
@@ -157,7 +157,7 @@ function Home() {
 
                                     <button
                                         type="submit"
-                                        className="bg-sky-900 text-white font-bold py-3 rounded-lg hover:bg-sky-800 transition"
+                                        className="bg-sky-900 text-white font-bold py-3 rounded-lg hover:bg-sky-800 transition hover:cursor-pointer"
                                         onClick={handleQuoteClick}
                                         
 
@@ -170,7 +170,7 @@ function Home() {
                     </article>
 
                 </div>
-                <article className="mt-10 bg-gradient-to-r from-sky-50 to-sky-100 w-full lg:w-2/3 flex justify-center flex-wrap rounded-t-2xl items-center" >
+                <article className="mt-10 bg-gradient-to-r from-sky-50 to-sky-100 w-full lg:w-2/3 flex justify-center flex-nowrap rounded-t-2xl items-center" >
 
                     <div className="flex flex-col items-center gap-3 p-5 md:p-10" >
                         <div className="bg-sky-400 rounded-full p-5 flex items-center justify-center">
@@ -244,7 +244,7 @@ function Home() {
 
                             <div className="p-6 pt-0">
                                 <button
-                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center hover:cursor-pointer"
                                     onClick={() => window.open(whatsappLink, '_blank')}
                                 >
                                     <svg
@@ -277,7 +277,7 @@ function Home() {
                                     <div className="flex ">
 
                                         <span className="font-bold text-green-600">R$ </span>
-                                        <span className="text-5xl font-bold text-green-600">189</span>
+                                        <span className="text-5xl font-bold text-green-600">149</span>
 
 
                                         <div className="flex flex-col">
@@ -291,7 +291,7 @@ function Home() {
 
                             <div className="p-6 pt-0">
                                 <button
-                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center hover:cursor-pointer"
                                     onClick={() => window.open(whatsappLink, '_blank')}
                                 >
                                     <svg
@@ -324,7 +324,7 @@ function Home() {
                                     <div className="flex ">
 
                                         <span className="font-bold text-green-600">R$ </span>
-                                        <span className="text-5xl font-bold text-green-600">189</span>
+                                        <span className="text-5xl font-bold text-green-600">119</span>
 
 
                                         <div className="flex flex-col">
@@ -338,7 +338,7 @@ function Home() {
 
                             <div className="p-6 pt-0">
                                 <button
-                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center"
+                                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center hover:cursor-pointer"
                                     onClick={() => window.open(whatsappLink, '_blank')}
                                 >
                                     <svg
