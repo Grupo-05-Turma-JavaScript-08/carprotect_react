@@ -20,14 +20,14 @@ import SupportTeamCard from './pages/suporte/Suporte';
 
 function App() {
   return (
-    // Adicionado: O BrowserRouter é necessário para que as rotas e links funcionem.
+   
     <AuthProvider>
       <ToastContainer />
       <BrowserRouter>
       <Navbar />
-      <div>
+      <div> 
         <Routes>
-          {/* Adicionado: A sua dashboard agora está em uma rota, como deve ser. */}
+        
           <Route path="/" element={<Home />} />
           <Route path='/logar'element={<AuthPage />} />
           <Route path="/quem-somos" element={<Sobre />} />
