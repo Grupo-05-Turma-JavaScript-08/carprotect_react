@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import ModalRating from "../../components/rating/modalrating/ModalRating";
 import { CarBatteryIcon, ClockIcon, KeyIcon, TireIcon, TrophyIcon } from "@phosphor-icons/react";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 function Home() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,8 +12,27 @@ function Home() {
     const whatsappMessage = "Olá, gostaria de saber mais sobre o seguro!";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-    // em todos input onChange={handleInputChange}
-    const handleInputChange = () => {
+    const [formData, setFormData] = useState({
+        nome: '',
+        email: '',
+        telefone: '',
+        celular: '',
+        tipoVeiculo: 'Carro',
+        montadora: '',
+        modelo: '',
+        ano: '',
+        placa: '',
+        possuiVeiculo: 'Já possui o Veículo?',
+    });
+
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+
         if (!hasInputChanged) {
             setHasInputChanged(true);
             if (timerRef.current) {
@@ -22,14 +42,40 @@ function Home() {
         }
     };
 
-    // onClick={handleQuoteClick}   no botão de cotação
-    const handleQuoteClick = (e: { preventDefault: () => void; }) => {
+    const handleFormSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
         if (timerRef.current) {
             clearTimeout(timerRef.current);
         }
         setHasInputChanged(true);
-        e.preventDefault();
+
+        const { nome, email, telefone, celular, tipoVeiculo, montadora, modelo, ano, placa, possuiVeiculo } = formData;
+
+        if (!nome || !email || !celular) {
+            ToastAlerta("Por favor, preencha os campos Nome, E-mail e Celular.", "erro");
+            return;
+        }
+
+        const message = `Olá, gostaria de uma cotação de seguro com as seguintes informações:
+        Nome: ${nome}
+        E-mail: ${email}
+        Telefone: ${telefone}
+        Celular: ${celular}
+        Tipo de Veículo: ${tipoVeiculo}
+        Montadora: ${montadora}
+        Modelo: ${modelo}
+        Ano: ${ano}
+        Placa: ${placa}
+        Possui o veículo?: ${possuiVeiculo}`;
+
+        const whatsappQuoteLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        window.open(whatsappQuoteLink, '_blank');
     };
+
+
+
 
     useEffect(() => {
         if (!hasInputChanged) {
@@ -87,68 +133,84 @@ function Home() {
                                 </h3>
                             </div>
                             <div className="p-8 bg-white">
-                                <form className="flex flex-col gap-4" >
+                                <form className="flex flex-col gap-4">
                                     <input
                                         type="text"
+                                        name="nome"
                                         placeholder="Nome"
                                         className="p-3 rounded-lg border-2 border-[#76AABF]/30 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                        onChange={handleInputChange}
+                                        onChange={handleChange}
+                                        value={formData.nome}
                                     />
                                     <input
                                         type="email"
+                                        name="email"
                                         placeholder="E-mail"
                                         className="p-3 rounded-lg border-2 border-[#76AABF]/30 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                        onChange={handleInputChange}
+                                        onChange={handleChange}
+                                        value={formData.email}
                                     />
                                     <div className="flex flex-col sm:flex-row gap-2">
                                         <input
                                             type="tel"
+                                            name="telefone"
                                             placeholder="Telefone"
                                             className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                            onChange={handleInputChange}
+                                            onChange={handleChange}
+                                            value={formData.telefone}
                                         />
                                         <input
                                             type="tel"
+                                            name="celular"
                                             placeholder="Celular"
                                             className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                            onChange={handleInputChange}
+                                            onChange={handleChange}
+                                            value={formData.celular}
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-2">
-                                        <select className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors text-[#678391]">
+                                        <select name="tipoVeiculo" onChange={handleChange} value={formData.tipoVeiculo} className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors text-[#678391]">
                                             <option>Carro</option>
                                             <option>Moto</option>
                                             <option>Caminhão</option>
                                         </select>
                                         <input
                                             type="text"
+                                            name="montadora"
                                             placeholder="Montadora"
                                             className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                            onChange={handleInputChange}
+                                            onChange={handleChange}
+                                            value={formData.montadora}
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-2">
                                         <input
                                             type="text"
+                                            name="modelo"
                                             placeholder="Modelo do Veículo"
                                             className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                            onChange={handleInputChange}
+                                            onChange={handleChange}
+                                            value={formData.modelo}
                                         />
                                         <input
                                             type="text"
+                                            name="ano"
                                             placeholder="Ano do Veículo"
                                             className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                            onChange={handleInputChange}
+                                            onChange={handleChange}
+                                            value={formData.ano}
                                         />
                                     </div>
                                     <div className="flex flex-col sm:flex-row gap-2">
                                         <input
                                             type="text"
+                                            name="placa"
                                             placeholder="Placa do Veículo"
                                             className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors"
-                                            onChange={handleInputChange}
+                                            onChange={handleChange}
+                                            value={formData.placa}
                                         />
-                                        <select className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors text-[#678391]">
+                                        <select name="possuiVeiculo" onChange={handleChange} value={formData.possuiVeiculo} className="p-3 rounded-lg border-2 border-[#76AABF]/30 w-full sm:w-1/2 bg-white focus:border-[#034153] focus:outline-none transition-colors text-[#678391]">
                                             <option>Já possui o Veículo?</option>
                                             <option>Sim</option>
                                             <option>Não</option>
@@ -158,7 +220,6 @@ function Home() {
                                     <button
                                         type="submit"
                                         className="bg-gradient-to-r from-[#034153] to-[#056174] text-white font-bold py-4 rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 hover:cursor-pointer hover:shadow-lg transform hover:scale-105"
-                                        onClick={handleQuoteClick}
                                     >
                                         COTAR AGORA
                                     </button>
