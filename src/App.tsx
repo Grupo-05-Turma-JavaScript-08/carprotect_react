@@ -13,9 +13,10 @@ import DeletarCar from './components/car/deletarcar/DeletarCar';
 import Footer from './components/footer/Footer';
 import ListaCar from './components/car/listacar/ListaCar';
 import DashboardAdmin from './pages/dashboardadmin/DashBoardAdmin';
-import ListaInsurance from './components/insurance/listainsurance/ListaInsurance';
+
 import FormInsurance from './components/insurance/forminsurance/FormInsurance';
 import DeleteInsurance from './components/insurance/deleteinsurance/DeleteInsurance';
+import SupportTeamCard from './pages/suporte/Suporte';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path='/cadastrarseguro' element={<FormInsurance />} />
           <Route path='/editarseguro/:id' element={<FormInsurance />} />
           <Route path='/deletarseguro/:id' element={<DeleteInsurance />} />
+          <Route path='/suporte' element={<SupportTeamCard />} />
 
         </Routes>
         </div>

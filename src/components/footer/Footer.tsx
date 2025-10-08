@@ -15,7 +15,8 @@ function Footer() {
     '/deletarcarro',
     '/cadastrarseguro',
     '/editarseguro',
-    '/deletarseguro'
+    '/deletarseguro',
+    '/suporte'
   ];
 
   // Verificar se a rota atual está na lista de rotas ocultas

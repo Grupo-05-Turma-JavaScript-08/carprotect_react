@@ -65,7 +65,7 @@ function DashboardClient() {
             <img 
               src="https://i.ibb.co/7dYs2wWs/output-onlinepngtools.png" 
               alt="Logo da Empresa" 
-              className="w-32 transition-transform duration-300 hover:scale-105"
+              className="w-32 transition-transform duration-300 hover:scale-105 "
             />
           </div>
           <div className="flex-grow text-center">
@@ -153,7 +153,7 @@ function DashboardClient() {
               </div>
               <p className="text-[#678391] text-lg mb-4">Nenhum carro encontrado.</p>
               <Link to='/cadastrarcarro'>
-                <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105">
+                <button className="px-6 py-3 bg-gradient-to-r from-[#034153] to-[#056174] text-white rounded-lg hover:from-[#056174] hover:to-[#034153] transition-all duration-300 transform hover:scale-105 hover:cursor-pointer">
                   Cadastrar Primeiro Carro
                 </button>
               </Link>
@@ -161,13 +161,14 @@ function DashboardClient() {
           ) : (
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-[#056174]">
               {/* Cabeçalho da tabela para telas grandes */}
-              <div className="hidden lg:grid bg-gradient-to-r from-[#034153] to-[#056174] px-6 py-4 grid-cols-12 gap-4 text-sm font-medium text-white">
+              <div className="hidden lg:grid bg-gradient-to-r from-[#034153] to-[#056174] px-6 py-4 grid-cols-13 gap-4 text-sm font-medium text-white">
                   <div className="col-span-2">Modelo</div>
                   <div className="col-span-2">Placa</div>
                   <div className="col-span-1">Ano</div>
                   <div className="col-span-2">Preço</div>
                   <div className="col-span-2">Nome Seguro</div>
                   <div className="col-span-1">Status</div>
+                  <div className="col-span-1">Carro</div>
                   <div className="col-span-1">Prêmio</div>
                   <div className="col-span-1">Ações</div>
               </div>
@@ -178,7 +179,7 @@ function DashboardClient() {
                     key={carro.id}
                     className={`px-6 py-4 transition-all duration-200 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
                     {/* Layout para telas grandes (tabela) */}
-                    <div className="hidden lg:grid grid-cols-12 gap-4 items-center text-sm">
+                    <div className="hidden lg:grid grid-cols-13 gap-4 items-center text-sm">
                       <div className="col-span-2">
                         <p className="font-medium text-[#034153]">{carro.model}</p>
                       </div>
@@ -196,24 +197,29 @@ function DashboardClient() {
                       <div className="col-span-2">
                         <span className="text-[#034153] font-medium">{carro.insurance?.title || '-'}</span>
                       </div>
-                      <div className="col-span-1">
+                      <div className="col-span-1 -ml-5">
                         <span className={`inline-flex px-3 py-1 text-xs font-medium rounded-full ${carro.insurance !== null ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
                           {carro.insurance !== null ? 'Segurado' : 'Não Segurado'}
                         </span>
                       </div>
                       <div className="col-span-1">
+                        <span className={`inline-flex px-3 py-1 text-xs font-medium rounded-full ${carro.insuranceStatus == 'Carro Atual' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                          {carro.insuranceStatus == 'Carro Atual'? 'Atual' : 'Antigo'}
+                        </span>
+                      </div>
+                      <div className="col-span-1 ">
                         <span className="text-[#678391] font-medium">
                           {carro.premiumAmount > 0 ? `R$ ${carro.premiumAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}` : '-'}
                         </span>
                       </div>
                       <div className="col-span-1 flex flex-row gap-2">
                         <Link to={`/editarcarro/${carro.id}`}>
-                          <button className="p-2 text-white bg-gradient-to-l from-[#034153] to-[#056174] rounded-lg" title="Editar">
+                          <button className="p-2.5 text-white bg-gradient-to-l from-[#034153] to-[#056174] rounded-lg hover:cursor-pointer" title="Editar">
                             <PencilSimple size={16} />
                           </button>
                         </Link>
                         <Link to={`/deletarcarro/${carro.id}`}>
-                          <button className="p-2 text-[#034153] border-2 border-[#034153] rounded-lg" title="Excluir">
+                          <button className="p-2 text-[#034153] border-2 border-[#034153] rounded-lg hover:cursor-pointer" title="Excluir">
                             <Trash size={16} />
                           </button>
                         </Link>
