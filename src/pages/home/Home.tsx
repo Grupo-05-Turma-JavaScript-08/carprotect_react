@@ -133,7 +133,7 @@ function Home() {
                                 </h3>
                             </div>
                             <div className="p-8 bg-white">
-                                <form className="flex flex-col gap-4">
+                                <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
                                     <input
                                         type="text"
                                         name="nome"
