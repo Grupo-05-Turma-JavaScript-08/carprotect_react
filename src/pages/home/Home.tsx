@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import ModalRating from "../../components/rating/modalrating/ModalRating";
 import { CarBatteryIcon, ClockIcon, KeyIcon, TireIcon, TrophyIcon } from "@phosphor-icons/react";
 import { ToastAlerta } from "../../utils/ToastAlerta";
+import WhatsApp from "../../components/whatsapp/WhatsApp";
 
 function Home() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -76,7 +77,6 @@ function Home() {
 
 
 
-
     useEffect(() => {
         if (!hasInputChanged) {
             timerRef.current = setTimeout(() => {
@@ -97,6 +97,7 @@ function Home() {
     return (
         <>
             <ModalRating isOpen={isModalOpen} onClose={handleCloseModal} />
+            <WhatsApp/>
 
             <section className="bg-gradient-to-br from-[#f7f9fb] to-[#e8eef3] flex justify-center items-center py-10 px-6 flex-col min-h-screen">
                 <div className="flex flex-col lg:flex-row w-full max-w-7xl justify-center">
