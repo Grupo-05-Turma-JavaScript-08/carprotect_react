@@ -35,7 +35,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         try {
             await login('/usuarios/logar', userLogin, (userResponse: UserLogin) => {
                 // Força admin se o e-mail for o do administrador
-                if (userResponse.username === "admin@email.com.br") {
+                if (userResponse.username === "admin@email.com.br" || userResponse.username === "adm@adm.com.br") {
                     userResponse.admin = true;
                 } else {
                     userResponse.admin = false;
