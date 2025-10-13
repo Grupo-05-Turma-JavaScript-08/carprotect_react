@@ -9,7 +9,7 @@ function Home() {
     const [hasInputChanged, setHasInputChanged] = useState(false);
     const timerRef = useRef<number | null>(null);
 
-    const whatsappNumber = "5511999999999";
+    const whatsappNumber = "5511944958388";
     const whatsappMessage = "Olá, gostaria de saber mais sobre o seguro!";
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
