@@ -14,7 +14,7 @@ function WhatsApp() {
     }}
       >
         <FloatingWhatsApp 
-        phoneNumber='+5551990212'
+        phoneNumber='+551151990212'
         accountName='Nexo Seguros'
         avatar='https://i.ibb.co/Kz9RnStV/nexo.png'
         statusMessage='Assistente virtual Nex'
